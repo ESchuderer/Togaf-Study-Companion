@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 2",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U2.4",
+      "topic": "Stakeholder Management (Phase A)",
+      "stitle": "Scenario 1 - Global pharmaceutical, R&D platform",
+      "scenario": "You are an Enterprise Architect at a global pharmaceutical company that develops and manufactures prescription medicines. The company uses the TOGAF Standard; the Chief Digital Officer sponsors the EA program. A Phase A project has begun to build a unified research data platform spanning discovery, clinical trials, and regulatory affairs. Scope is agreed. The heads of the three functions each favor a different data model, and the sponsor has warned that unresolved disagreement between them derailed a prior initiative. You must develop an architecture that reconciles their competing concerns.",
+      "q": "You have been asked to recommend an approach that addresses the competing concerns of the three function heads. Which is the best answer?",
+      "o": {
+        "A": "You select the data model that best fits the largest function, document it as the target, and ask the other two heads to adopt it in the interest of consistency.",
+        "B": "You identify the three heads and their concerns, use the architecture trade-off method to define and assess alternatives across the affected domains, present the value, cost, and risk of each so the stakeholders can trade off their competing concerns and select the target, and record the decision.",
+        "C": "You escalate the disagreement to the Chief Digital Officer and ask the sponsor to mandate a single data model so the project can proceed without further debate.",
+        "D": "You gather each head's requirements, build a superset data model that includes every requested feature, and present it as the consensus target that satisfies all three."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). Picking one function's model on size alone ignores the other concerns and does not present a trade-off; stakeholders have not made an informed decision across their competing interests.",
+        "B": "Best (5). Trade-off analysis surfaces alternatives and their implications so stakeholders make an informed decision across competing concerns; the architect assesses and facilitates while the stakeholders select the target.",
+        "C": "Second (3). Sponsor involvement can break a deadlock, but handing the decision up without first assessing alternatives and trade-offs skips the architect's job of informing the decision; it is a fallback, not the recommended approach.",
+        "D": "Distractor (0). A superset that bundles every request is not a reconciled architecture; it hides the trade-offs, inflates cost and risk, and is the architect imposing a solution rather than facilitating a stakeholder decision."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U4.3",
+      "topic": "Phase B - Business Architecture",
+      "stitle": "Scenario 2 - Pharmaceutical, clinical trial operations",
+      "scenario": "You are an Architect in the pharmaceutical company's EA team, working the Business Architecture for clinical trial operations. The company uses the TOGAF Standard; the Chief Digital Officer sponsors the program. Key stakeholders have agreed the work at a high level, and a Baseline Business Architecture exists. Before defining the target you need to be sure the business context and drivers are correct, because the trial-operations business goals were restated during a recent reorganization and some stakeholders dispute them.",
+      "q": "You have been asked what information you need to gather to produce the Phase B outputs correctly. Which is the best answer?",
+      "o": {
+        "A": "You confirm the business principles, goals, and drivers for trial operations, and where they are unclear or disputed you return to the originators of the Statement of Architecture Work to clarify them before developing the target business architecture.",
+        "B": "You proceed directly to modeling the target business capabilities and value streams, on the basis that the reorganization already settled the direction and the disputes will resolve themselves during review.",
+        "C": "You gather the business principles, goals, and drivers from the EA team's own records and adopt them, since the EA team maintains the authoritative statement of business direction.",
+        "D": "You collect the disputed goals, pick the interpretation that best supports the platform you expect to build, and document it as the agreed business context."
+      },
+      "pts": {
+        "A": 5,
+        "B": 1,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Business principles, goals, and drivers give the business context for Phase B, and when they are unclear the guidance is to go back to the originators of the Statement of Architecture Work to clarify before proceeding.",
+        "B": "Third (1). Modeling the target without confirming disputed goals risks building on a wrong context; leaving disputes to resolve themselves in review is not the recommended approach.",
+        "C": "Second (3). Business principles, goals, and drivers are the right information, but they originate with the business, not the EA team's records, so adopting the EA copy without clarifying the dispute misattributes ownership.",
+        "D": "Distractor (0). Choosing the interpretation that suits an expected solution reverses the direction of the work and lets the architect set business goals that belong to the business."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.5",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Pharmaceutical, regulatory submission data",
+      "scenario": "You are a Senior Architect in the pharmaceutical company's EA team responsible for the Application and Data Architecture of regulatory submissions. The company uses the TOGAF Standard; the Chief Digital Officer sponsors the program. The Business Architecture is agreed with stakeholders. Regulatory affairs must exchange structured submission data with several national agencies, each with different formats, and stakeholders are concerned about the cost and reliability of these exchanges. You are starting Phase C.",
+      "q": "You have been asked what information is most relevant to develop the Phase C outputs. Which is the best answer?",
+      "o": {
+        "A": "You gather only the current data models, since the applications will be replaced anyway and the existing interfaces are irrelevant to the target.",
+        "B": "You identify the information exchanges required with each agency, the content and format of each, and how applications must share information and services, and you determine where the current Application and Data Architecture fails to support these exchanges so the changes and their cost can be assessed with stakeholders.",
+        "C": "You identify the required agency information exchanges and their content, and design the technical messaging protocols and network mechanisms that will carry them to the agencies.",
+        "D": "You catalog the current applications and data entities, produce an application communication diagram, and record the interfaces without analyzing whether they meet the target exchange needs."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Retaining only current data models while dismissing existing applications and interfaces leaves out baseline information needed to assess the required information exchanges and gaps against the target.",
+        "B": "Best (5). Phase C detail is the content of information and service exchanges and how applications share them; identifying where the current architecture fails to support the agency exchanges lets the changes and cost be assessed with stakeholders.",
+        "C": "Third (1). Designing technical messaging protocols and network mechanisms is Phase D, not the Application and Data information needed in Phase C.",
+        "D": "Second (3). Cataloging applications and data and an application communication diagram are valid Phase C artifacts, but without analyzing them against the target exchange needs they do not surface the changes stakeholders must decide on."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U1.9",
+      "topic": "Risk & Security",
+      "stitle": "Scenario 4 - Pharmaceutical, cross-domain patient data",
+      "scenario": "You are a Senior Architect in the pharmaceutical company's EA team. The company uses the TOGAF Standard; the Chief Digital Officer sponsors the program. A Statement of Architecture Work is approved and stakeholders have agreed to develop a Target Architecture that shares patient data across discovery and clinical functions. A set of domain architectures with identified gaps has been approved. At the latest executive meeting a concern was raised about the risk and security of sharing patient data across functions during the coming implementation.",
+      "q": "You have been asked to recommend an approach to address the risk and security concern. Which is the best answer?",
+      "o": {
+        "A": "You provide security training to the implementation team for correct deployment and configuration, and conduct risk mitigation in the Technology Architecture to determine the organization's risk appetite, putting parallel systems in place if the risk is not accepted.",
+        "B": "You define the Architecture Roadmap and evaluate the security and risk impacts for the gaps being addressed, determine value, effort, and risk for each change and work package, ensure stakeholders' security and risk concerns are addressed and that work packages carry security and risk measures, and develop a Risk Mitigation Plan for the risks arising from the new architecture.",
+        "C": "You iterate back to the Architecture Vision phase and classify risks by time, cost, and scope so the right individuals manage them, then ensure the Architecture Contracts issued in Implementation Governance address the initial risks and include monitoring.",
+        "D": "You secure the migration activity with a risk assessment and Risk Mitigation Plan, including a classification scheme and risk-assessment worksheets, and include a security impact analysis in migration planning so the initial level of risk is understood before contracts are issued."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Training the implementation team does not fix inherent architecture risk, risk mitigation does not measure risk appetite, TOGAF does not recommend this in the Technology Architecture, and parallel systems add risk and cost.",
+        "B": "Best (5). Development is in Phase E; risk is evaluated as the Architecture Roadmap is drawn up, stakeholders' security and risk concerns are addressed, work-package deliverables include risk and security measures, and a Risk Mitigation Plan is the appropriate deliverable.",
+        "C": "Third (1). Risk classification is valid but the proposed classifications do not address the concern, and deferring to Implementation Governance to handle security and mitigation is too late.",
+        "D": "Second (3). A risk assessment, worksheets, and a security impact analysis are appropriate, but this omits evaluating the security and risk impacts as the roadmap is drawn up and does not explicitly tie the work to stakeholder concerns."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.3",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Pharmaceutical, implementation approach",
+      "scenario": "You are an Enterprise Architect at the pharmaceutical company, which uses the TOGAF Standard; the Chief Digital Officer sponsors the program. An Architecture Vision and domain architectures with gaps are approved for the unified research data platform. The estate mixes stable legacy systems that must keep running with new capabilities the business wants quickly. Stakeholders want early value from the new capabilities while limiting disruption to the systems that support current trials. You must recommend how to approach implementation.",
+      "q": "You have been asked to recommend the implementation approach that best fits the situation. Which is the best answer?",
+      "o": {
+        "A": "You choose a greenfield approach and rebuild the whole estate as new capability, retiring the legacy systems on a fixed date so the platform is consistent from the start.",
+        "B": "You assess the situation against the three basic implementation approaches, recognize a mix of a stable, functionally driven need and new revolutionary capability, and recommend a combined approach that protects the systems supporting current trials while delivering the new capabilities incrementally through Transition Architectures.",
+        "C": "You apply a purely revolutionary approach across the whole estate to deliver all the new capabilities at once, since the business wants them quickly.",
+        "D": "You keep every system as-is and add the new capabilities only where they can bolt on without touching the legacy systems, deferring any structural change indefinitely."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 0,
+        "D": 3
+      },
+      "rat": {
+        "A": "Third (1). A greenfield rebuild with a fixed legacy retirement date ignores the need to protect current-trial systems and the call for early, incremental value.",
+        "B": "Best (5). Phase E weighs the three basic approaches; here a combined approach fits a mix of stable functional needs and new revolutionary capability, using Transition Architectures to deliver value incrementally while protecting the systems that support current trials.",
+        "C": "Distractor (0). A wholesale revolutionary approach maximizes disruption to the very systems the stakeholders want protected and ignores the incremental-value concern.",
+        "D": "Second (3). A conservative bolt-on limits disruption and can deliver some value, but deferring all structural change indefinitely will not deliver the new capabilities the business needs and is not a balanced combined approach."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.5",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Pharmaceutical, sequencing transition states",
+      "scenario": "You are Lead Architect at the pharmaceutical company, which uses the TOGAF ADM; the Chief Digital Officer sponsors the program. An outline Implementation and Migration Plan is approved and detailed planning is underway. Portfolio Management, Operations, and the clinical business functions will fund, build, and run the result. The sponsor wants the migration sequenced so that each transition state is stable and delivers defined business value, and wants the wider stakeholder groups committed to the plan.",
+      "q": "You have been asked how the detailed migration plan and its transition states should be produced. Which is the best answer?",
+      "o": {
+        "A": "The EA team's domain architects define the Transition Architectures and the sequence, document them in the plan, and send them to Portfolio Management and Operations for scheduling once the EA work is finished.",
+        "B": "Business Planning, Portfolio Management, and Operations join the EA team in migration planning; you create detailed resource estimates and business value for the deliverables, sequence a series of Transition Architectures that are each stable and value-bearing based on stakeholder priorities, confirm the Architecture Roadmap, and finalize the plan.",
+        "C": "You finalize the plan and transition states with the domain architects, submit it to the Architecture Board for approval, and incorporate feedback; the plan lists prioritized projects with approximate cost, effort, and a sequenced timeline used as the roadmap.",
+        "D": "Project Managers take the Phase E strategy, build project plans on scope, budget, and time, define value per project, and select and schedule the transition states themselves, requesting funding from the Architecture Board."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). It sequences Transition Architectures but is EA-team-centric and treats the wider groups as schedulers after the fact, lacking the collaborative planning Phase F calls for.",
+        "B": "Best (5). Phase F is collaborative planning with stakeholders inside and outside the organization, with resource estimates and business value for deliverables and a sequence of stable, value-bearing Transition Architectures based on stakeholder priorities, then confirming the roadmap and finalizing the plan.",
+        "C": "Third (1). Board approval and a prioritized project list are part of it, but this omits the collaborative planning with the funding, building, and operating stakeholders.",
+        "D": "Distractor (0). This hands strategic migration and transition sequencing to Project Managers, whereas the EA should give projects detailed guidance so they focus on operational issues."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.14",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Pharmaceutical, contracting the build partner",
+      "scenario": "You are Lead Architect at the pharmaceutical company, which has a mature EA capability using the TOGAF Standard; the Chief Digital Officer sponsors the program. After consulting stakeholders, the sponsor has engaged an external system integrator to build the research data platform and has approved the roadmap projects and appointed a project manager. The Architecture Board wants assurance that the integrator will build to the target architecture and that compliance is enforceable. You must set up how the architecture is communicated to and enforced with the implementer.",
+      "q": "You have been asked how implementation governance should communicate the architecture to the integrator. Which is the best answer?",
+      "o": {
+        "A": "You issue the integrator the approved Architecture Definition Document and requirements, ask them to sign an acknowledgement of receipt, and rely on the project manager's status reports to confirm compliance.",
+        "B": "You draw up an Architecture Contract (an architecture design and development contract) with the integrator specifying deliverables, quality, and fitness for purpose, and run architecture compliance reviews at defined checkpoints during implementation, with the architect advising and the stakeholders deciding on any dispensation.",
+        "C": "You rely on the Statement of Architecture Work agreed with the sponsor as the governing agreement for the integrator, since it already defines scope and acceptance.",
+        "D": "You leave the integrator to follow their own delivery method, review the finished system against the target architecture at go-live, and raise defects if it does not conform."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). Handing over documents with a receipt and relying on PM status reports does not create an enforceable architecture agreement or the compliance reviews that Phase G governance requires.",
+        "B": "Best (5). Phase G communicates and enforces the architecture through an Architecture Contract with the development partner plus compliance reviews at checkpoints during implementation; the architect assesses and advises while stakeholders decide on dispensations.",
+        "C": "Second (3). The Statement of Architecture Work is an architecture contract type, but it is between the architecting organization and the sponsor; the integrator needs an architecture design and development contract, so this is close but the wrong contract for the partner.",
+        "D": "Distractor (0). Reviewing only at go-live evaluates after the fact rather than during implementation and provides no governing agreement or in-flight compliance control."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U7.2",
+      "topic": "Requirements Management",
+      "stitle": "Scenario 8 - Pharmaceutical, new regulatory requirement mid-cycle",
+      "scenario": "You are an Architect in the pharmaceutical company's EA team. The company uses the TOGAF Standard; the Chief Digital Officer sponsors the program. Phase C is under way for the research data platform when a regulator issues new data-integrity rules that introduce a significant new requirement. Requirements Management operates across the ADM cycle. Stakeholders want the new requirement handled without losing control of the architecture already agreed.",
+      "q": "You have been asked how the new requirement should be handled through Requirements Management. Which is the best answer?",
+      "o": {
+        "A": "You add the new requirement directly into the Phase C work and continue, updating the models to include it without a formal impact assessment because Requirements Management is continuous.",
+        "B": "You record the new requirement, assess its impact on the requirements already baselined and on the phases already completed through a requirements impact assessment, and feed the prioritized, agreed requirement back into the affected ADM phases under stakeholder agreement.",
+        "C": "You defer the new requirement to Phase H change management and continue Phase C unchanged, since requirements arising after baselining are handled only after the cycle completes.",
+        "D": "You log the requirement in the Requirements Repository and note it for the next architecture cycle, leaving the current cycle's requirements untouched."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 0,
+        "D": 3
+      },
+      "rat": {
+        "A": "Third (1). Requirements Management is continuous, but adding a significant new requirement without an impact assessment loses control of the baselined requirements and the phases already done.",
+        "B": "Best (5). Requirements Management captures the new requirement, assesses its impact on baselined requirements and completed phases, and feeds the agreed, prioritized requirement back into the affected phases under stakeholder agreement, keeping the architecture under control.",
+        "C": "Distractor (0). Requirements Management operates throughout the cycle; a significant new regulatory requirement is not simply deferred to Phase H while Phase C continues unchanged.",
+        "D": "Second (3). Recording it in the Requirements Repository is correct, but deferring a significant regulatory requirement to the next cycle without assessing its impact on the current one under-reacts."
+      }
+    }
+  ]
+}

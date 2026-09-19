@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 4",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U2.1",
+      "topic": "Stakeholder Management (Phase A)",
+      "stitle": "Scenario 1 - National tax authority, digital filing",
+      "scenario": "You consult to the Chief Architect of a national tax authority modernizing its citizen filing service. The authority uses the TOGAF Standard; the Director General sponsors the EA program. A Phase A project has started and scope is agreed. The service touches citizens, tax agents, call-center staff, the fraud unit, and a data-protection regulator, and the Chief Architect stresses that a previous release failed because whole groups of affected users and the regulator were identified too late and their concerns forced expensive rework.",
+      "q": "You have been asked to recommend an approach that develops an architecture addressing the Chief Architect's concern. Which is the best answer?",
+      "o": {
+        "A": "You produce a Communications Plan for the citizen and agent groups so they are kept informed of the new filing service and can comment as it is built.",
+        "B": "You identify the stakeholders across citizens, agents, call-center, the fraud unit, and the regulator, classify their position and influence in a Stakeholder Map, select the most relevant viewpoints for each, validate that their concerns are addressed, and communicate early and frequently so they understand the architecture process.",
+        "C": "You run business scenarios with the affected user groups to determine who will support or block the service and derive the requirements the architecture must satisfy, identifying relevant viewpoints validated with them.",
+        "D": "You run a Phase A pilot of the preferred filing platform with a sample of citizens, map it to a viewpoint library, and once they confirm it meets their needs issue an Architecture Contract to the platform vendor."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). The Communications Plan comes from stakeholder analysis, not instead of it, and scoping it to citizens and agents omits the fraud unit and the regulator whose late involvement caused the prior rework.",
+        "B": "Best (5). Stakeholder analysis and a Stakeholder Map is the recommended Phase A technique; it identifies and classifies all the affected groups including the regulator early, validates concerns, and drives active engagement, directly addressing the concern.",
+        "C": "Second (3). Business scenarios engage stakeholders and derive requirements, but this omits the Stakeholder Map and the explicit early identification and classification of all key groups.",
+        "D": "Distractor (0). TOGAF does not recommend Phase A pilots to prove vendor feasibility, and this misuses the Statement of Architecture Work and Architecture Contract sequence."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U4.4",
+      "topic": "Phase B - Business Architecture",
+      "stitle": "Scenario 2 - Tax authority, case-handling redesign",
+      "scenario": "You are an Architect in the tax authority's EA team working the Business Architecture for case handling. The authority uses the TOGAF Standard; the Director General sponsors the program. Key stakeholders have agreed the work at a high level and a Baseline Business Architecture exists. Policy requires faster case resolution while preserving audit and appeal rights. A packaged case-management product is available but aligns poorly with the statutory process.",
+      "q": "The team leader asks how you would identify the required changes in the Business Architecture. Which is the best answer?",
+      "o": {
+        "A": "You determine where the business (organizational design, case-handling processes, and so on) does not support faster resolution while preserving audit and appeal rights, identify what must change and the work needed, describe the options and costs to stakeholders so they can decide, and work with them on the trade-offs.",
+        "B": "You review and update the current architecture descriptions, draw up target descriptions with new value streams and a capability map for case handling, map value stream stages to capabilities, and run a capability gap analysis.",
+        "C": "You model the current state with capabilities, value streams, and organization mapping, focus on improving capabilities and value streams because baselines exist, and document where the business must change.",
+        "D": "You obtain the packaged case-management product's documentation, define the changes to align it with the statutory process, sequence them in a roadmap, and get references from other agencies to confirm the vendor can meet the date."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Phase B finds where the business does not support the change, describes options and costs, and works with stakeholders on trade-offs so they decide, keeping audit and appeal rights in view.",
+        "B": "Second (3). Updating descriptions and a capability gap analysis is a valid technique to find change, but it is model-focused and at this stage you need not commit to a packaged product.",
+        "C": "Third (1). Modeling only, with no stakeholder engagement, and it wrongly assumes the focus is capabilities and value streams just because baselines exist.",
+        "D": "Distractor (0). This is not Business Architecture; it is implicit architecture with the architect acting as SME and implementer, jumping to a vendor solution."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.7",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Tax authority, taxpayer data across systems",
+      "scenario": "You are a Senior Architect in the tax authority's EA team responsible for the Application and Data Architecture. The authority uses the TOGAF Standard; the Director General sponsors the program. A Business Architecture review with stakeholders found that taxpayer data is duplicated and inconsistent across filing, collection, and audit systems, causing errors and costly manual reconciliation. Stakeholders agree accuracy must improve but note the systems are costly to change. You are entering Phase C and need to establish what information you require.",
+      "q": "You have been asked what information is most relevant to develop the Phase C outputs. Which is the best answer?",
+      "o": {
+        "A": "You gather only the target data model, since the goal is a single consistent taxpayer record and the current systems will be replaced.",
+        "B": "You identify the taxpayer data entities and the information shared between filing, collection, and audit, determine where the current Application and Data Architecture cause the duplication and inconsistency, and establish the changes and their cost so they can be assessed with stakeholders.",
+        "C": "You identify the data entities and the sharing needs, then specify the database technology and integration platform that will host a single consistent taxpayer record.",
+        "D": "You produce a Data Entity to Business Function matrix and a logical data diagram of the current state and record them, without analyzing whether they meet the target accuracy needs."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Discarding the baseline and assuming replacement ignores the information sharing that is the core Phase C concern and precludes a gap analysis against the target.",
+        "B": "Best (5). Phase C establishes the data entities and information sharing and where the current architecture causes the deficiency, so the changes and their cost can be assessed with stakeholders and feed Phase E and F.",
+        "C": "Third (1). Database technology and integration platform are Phase D concerns, not the Application and Data information needed to develop Phase C.",
+        "D": "Second (3). The data matrix and logical data diagram are valid Phase C artifacts, but without analyzing them against the target accuracy needs they do not surface the changes stakeholders must decide on."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U1.9",
+      "topic": "Risk & Security",
+      "stitle": "Scenario 4 - Tax authority, sharing data with other agencies",
+      "scenario": "You are a Senior Architect in the tax authority's EA team. The authority uses the TOGAF Standard; the Director General sponsors the program. A Statement of Architecture Work is approved and stakeholders have agreed to develop a Target Architecture that shares selected taxpayer data with a benefits agency and a customs agency to detect fraud. A set of domain architectures with identified gaps has been approved. At the latest executive meeting a concern was raised about the risk and security of sharing taxpayer data across agency boundaries as the changes are implemented.",
+      "q": "You have been asked to recommend an approach to address the risk and security concern. Which is the best answer?",
+      "o": {
+        "A": "You define the Architecture Roadmap and evaluate the security and risk impacts for the gaps being addressed, determine value, effort, and risk for each change and work package, ensure stakeholders' security and risk concerns are addressed and work packages carry security and risk measures, and develop a Risk Mitigation Plan for the risks arising from the new architecture.",
+        "B": "You secure the migration activity with a risk assessment and Risk Mitigation Plan including a classification scheme and worksheets, and add a security impact analysis to migration planning so the initial level of risk is understood before contracts are issued.",
+        "C": "You iterate back to the Architecture Vision phase and classify risks by time, cost, and scope, then ensure the Architecture Contracts issued in Implementation Governance address the initial risks and include monitoring.",
+        "D": "You provide security training to the implementation team for correct deployment and configuration and conduct risk mitigation in the Technology Architecture to determine risk appetite, putting parallel systems in place if the risk is not accepted."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Development is in Phase E; risk is evaluated as the Architecture Roadmap is drawn up, stakeholders' security and risk concerns are addressed, work packages carry risk and security measures, and a Risk Mitigation Plan is the appropriate deliverable.",
+        "B": "Second (3). A risk assessment, worksheets, and a security impact analysis are appropriate, but this omits evaluating the security and risk impacts as the roadmap is drawn up and does not explicitly tie the work to stakeholder concerns.",
+        "C": "Third (1). Risk classification is valid but the proposed classifications do not address the concern, and deferring security and mitigation to Implementation Governance is too late.",
+        "D": "Distractor (0). Training does not fix inherent architecture risk, risk mitigation does not measure risk appetite, TOGAF does not recommend this in the Technology Architecture, and parallel systems add risk and cost."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.5",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Tax authority, transition architectures",
+      "scenario": "You are an Enterprise Architect at the tax authority, which uses the TOGAF Standard; the Director General sponsors the program. An Architecture Vision and domain architectures with gaps are approved for the filing and fraud-detection modernization. The service must keep operating through the annual filing peak, and ministers want visible improvements each year rather than a single distant delivery. The Governing Board wants risk controlled and value delivered progressively.",
+      "q": "You have been asked how to define the transition from the approved gaps to a deliverable plan. Which is the best answer?",
+      "o": {
+        "A": "You direct each domain architect to produce projects that close their domain's gaps, sum the work into the Implementation and Migration Plan, and record the timeline in the Architecture Roadmap.",
+        "B": "You identify dependencies among the changes and organize them into work packages, assess value, effort, and risk against stakeholder priorities, and define a series of Transition Architectures that each keep the service running and deliver visible annual improvement, documenting the work packages and Transition Architectures in the Architecture Roadmap.",
+        "C": "You ask stakeholders what must be done to implement the domain architectures, roll it into an IT portfolio plan, and produce a comprehensive Target Architecture with detailed technology choices for the next five years.",
+        "D": "You implement the domain architectures immediately, revise all in-flight projects to align, expose all functionality through service interfaces, and publish the result as the Implementation and Migration Plan."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). It addresses the deliverables but as an uncoordinated domain-by-domain roll-up, without Transition Architectures for incremental value, though it names the roadmap and plan correctly.",
+        "B": "Best (5). Phase E organizes changes into work packages, assesses value/effort/risk against stakeholder priorities, and defines Transition Architectures that keep the service running and deliver progressive annual value, documented in the Architecture Roadmap.",
+        "C": "Third (1). It considers stakeholder input but ends in fixed five-year technology choices, negating the incremental annual value ministers want.",
+        "D": "Distractor (0). It jumps to a technical solution, ignores transition and value, and does not follow Phase E guidance."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.6",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Tax authority, coordinating cross-agency migration",
+      "scenario": "You are Lead Architect at the tax authority, which uses the TOGAF ADM; the Director General sponsors the program. An outline Implementation and Migration Plan is approved and detailed planning is under way. The migration will affect the benefits and customs agencies, a shared government platform team, and the authority's own operations, all of whom will fund, build, or run parts of the result. The sponsor wants the migration coordinated across these bodies with the impact on each understood and agreed.",
+      "q": "You have been asked how the detailed Implementation and Migration Plan should be created given the cross-agency impact. Which is the best answer?",
+      "o": {
+        "A": "The EA team's domain architects define the plan and the migration sequence and issue it to the other agencies and the platform team with the dates they must meet.",
+        "B": "Business Planning, Portfolio Management, Operations, and representatives of the affected agencies and the platform team join the EA team in migration planning, assess the impact and coordination required for each body, create resource estimates and business value for the deliverables, plan Transition Architectures on stakeholder priorities, confirm the roadmap, and finalize the plan.",
+        "C": "You finalize the plan with the domain architects, submit it to the Architecture Board for approval, and ask the Board to instruct the other agencies to comply with the sequence.",
+        "D": "Project Managers in each agency use the Phase E strategy to build their own project plans on scope, budget, and time, and coordinate among themselves, requesting funding from the Architecture Board."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). It sequences the migration but is EA-team-centric and issues dates rather than coordinating with the affected bodies, missing the collaborative, impact-aware planning Phase F requires.",
+        "B": "Best (5). Phase F is collaborative planning with stakeholders inside and outside the organization, assessing the impact and coordination for each affected body, with resource estimates, business value, and Transition Architectures on stakeholder priorities, then confirming the roadmap and finalizing the plan.",
+        "C": "Third (1). Board approval is part of it, but relying on the Board to instruct other agencies skips the collaborative planning and impact assessment across those bodies.",
+        "D": "Distractor (0). This hands strategic, cross-agency migration planning to Project Managers, whereas the EA should give projects detailed guidance so they focus on operational issues."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.12",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Tax authority, non-standard identity component",
+      "scenario": "You are Lead Architect at the tax authority, which has a mature EA capability using the TOGAF Standard; the Director General sponsors the program. After consulting key stakeholders, the sponsor has decided to deploy a COTS identity-verification package quickly and within budget to meet a legislated deadline. The package needs an identity-brokering component that is not on the current infrastructure standards list. The Architecture Board noted the non-standard component and the need to protect security and privacy KPIs. The sponsor has approved the roadmap projects and appointed a project manager.",
+      "q": "You have been asked to recommend a plan to implement the sponsor's direction. Which is the best answer?",
+      "o": {
+        "A": "You ask the vendor to modify the package to use a standard brokering component, build a prototype to explore options, obtain internal development leads' approval, then hand a schedule-focused plan to the project manager and review performance after go-live.",
+        "B": "You prepare a risk assessment and impact analysis of the non-standard component, hand deliverables and dates to the implementation team, obtain sponsor approval, test the solution just before deployment, and archive artifacts when done.",
+        "C": "You accept the direction, add the identity-brokering component as an additional organizational standard in the Standards Library (noting the training and skills needed), work with the implementation team to draw up an Architecture Contract, emphasize compliance reviews and security and privacy testing during implementation, agree SLAs and dates with the business, and collect reusable artifacts afterward.",
+        "D": "You eliminate the non-standard component, create a plan and Architecture Contract to build a standards-compliant replacement in-house, tell the sponsor it is cheaper long-term, take the budget impact to the finance committee, and chair frequent project meetings to monitor compliance."
+      },
+      "pts": {
+        "A": 3,
+        "B": 1,
+        "C": 5,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). Vendor change and a prototype cost the time and budget the scenario forbids given the legislated deadline, the project plan is the PM's job, and reviewing performance after go-live is too late.",
+        "B": "Third (1). It follows the direction but focuses on risk over co-existence, just hands over schedules, and tests too late, after the solution is built.",
+        "C": "Best (5). All within Phase G: accept the stakeholder-informed decision, add the new standard to the Standards Library, form an Architecture Contract with the implementation team, run compliance reviews and testing during implementation, agree SLAs with the business, and collect reusable artifacts afterward.",
+        "D": "Distractor (0). It reverses a decision the sponsor already made with stakeholders, makes unsubstantiated cost claims, and has the architect chairing PM meetings."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U6.2",
+      "topic": "Architecture Change Management",
+      "stitle": "Scenario 8 - Tax authority, budget-driven change request",
+      "scenario": "You are Lead Architect at the tax authority. The modernized filing architecture is deployed and under Architecture Change Management. The authority uses the TOGAF Standard; the Director General sponsors the program. A government-wide cost-reduction initiative has been announced, and the CIO has raised a Change Request asking whether parts of the architecture can be consolidated onto the shared government platform to cut running costs. Stakeholders want to know how to handle it without destabilizing the live service.",
+      "q": "You have been asked how to handle the Change Request. Which is the best answer?",
+      "o": {
+        "A": "You act on the cost-reduction initiative at once by moving components to the shared platform, and record the change in the repository as a routine optimization.",
+        "B": "You assess the Change Request in the change management process, evaluate its impact on the current architecture, requirements, and business value, determine whether it can be met by a change to the existing architecture or requires a new ADM cycle, and recommend to the stakeholders who decide.",
+        "C": "You immediately start a full new ADM cycle from the Architecture Vision to re-plan the whole filing architecture around the shared platform.",
+        "D": "You log the Change Request and prepare an impact assessment noting the affected requirements and stakeholder priority, referencing it in the repository for consideration at the next architecture review."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Moving components at once and calling it routine skips the impact assessment and takes a decision that belongs to stakeholders, risking the live service.",
+        "B": "Best (5). Phase H assesses the Change Request, evaluates impact on architecture, requirements, and value, and determines whether a change to the existing architecture suffices or a new ADM cycle is warranted, with stakeholders deciding.",
+        "C": "Third (1). Jumping to a full new ADM cycle before assessing impact over-reacts; Phase H first determines whether a lighter change suffices.",
+        "D": "Second (3). Logging the request and an impact assessment are correct inputs, but deferring the decision to the next review rather than completing the Phase H classification and recommendation now leaves it unresolved."
+      }
+    }
+  ]
+}

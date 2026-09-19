@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 10",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U2.1",
+      "topic": "Stakeholder Management (Phase A)",
+      "stitle": "Scenario 1 - Mining group acquiring a technology firm",
+      "scenario": "You consult to the Chief Architect of a global mining group that has approval to acquire a mine-automation technology firm to modernize its operations. The group has a mature EA practice supporting many divisions using the TOGAF Standard; each division has its own EA team adopting corporate practices. An EA project has begun to integrate the acquisition and Phase A is under way with scope agreed, including removing duplicated control and reporting systems. The Chief Architect stresses that the architecture and resulting changes must be embraced across the whole division including the acquired firm, and notes that a previous acquisition failed because key operational leaders at the acquired firm were never engaged.",
+      "q": "You have been asked to recommend an approach that develops an architecture addressing the Chief Architect's concern. Which is the best answer?",
+      "o": {
+        "A": "Identify the key stakeholders across both the existing division and the acquired firm, classify their position and influence in a Stakeholder Map, focus on the key stakeholders, identify the most relevant viewpoints for each, validate their concerns are addressed, and communicate early and frequently so they understand the architecture process.",
+        "B": "Conduct a series of business scenarios with the stakeholders impacted by the acquisition to determine who will block or support the initiative, derive the requirements the architecture must address, and identify the most relevant viewpoints to validate with the stakeholders.",
+        "C": "Focus on communications with the stakeholders at the acquired firm, since effective communication to the right people at the right time is a critical success factor for a merger, and develop a Communications Plan so they are aware of the key architecture features and can comment.",
+        "D": "Run a Phase A pilot to demonstrate the technical feasibility of the approaches from preferred automation suppliers, map the candidate solutions to a viewpoint library, and once stakeholders confirm the fit, complete a Statement of Work and issue Architecture Contracts to the suppliers."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Stakeholder analysis producing a Stakeholder Map is the technique TOGAF recommends for identifying and engaging key stakeholders in Phase A. It is a major Phase A output feeding other products and covers both organizations with active engagement, addressing the failure to engage key players.",
+        "B": "Second (3). Business scenarios are valid for the Architecture Vision and accomplish some engagement, but they omit the Stakeholder Map, the key-player identification, and the active engagement policy.",
+        "C": "Third (1). The Communications Plan is produced from stakeholder analysis, not instead of it, and scoping only to the acquired firm omits key stakeholders in the existing division.",
+        "D": "Distractor (0). TOGAF does not use Phase A pilots to assess feasibility, and this misapplies the Statement of Work and Architecture Contract sequence while jumping to a solution."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U4.4",
+      "topic": "Phase B - Business Architecture",
+      "stitle": "Scenario 2 - Cinema chain adding streaming",
+      "scenario": "You are an Architect in the EA team of a cinema chain adding a direct-to-consumer streaming service alongside its theaters. The chain uses the TOGAF Standard; the CIO sponsors the EA program. An Architecture Vision is approved and there is high-level agreement across domains. A Baseline Description of the current Business Architecture exists, including a business capability map and value stream descriptions for the theater business. A packaged streaming and subscription solution is available but aligns poorly with the current ticketing and membership systems. The team leader asks how you would identify the changes required in the Business Architecture.",
+      "q": "Which is the best answer?",
+      "o": {
+        "A": "Request the packaged streaming solution's documentation, define the changes needed to align it with the ticketing and membership systems, sequence them into an Architecture Roadmap, and get references from other operators to confirm the vendor can meet the dates and service levels.",
+        "B": "Determine where the current business (organizational design, processes, capabilities) does not support the streaming service, describe the options for change and their costs to stakeholders so they can decide, identify where trade-off decisions are needed, and work with the stakeholders to resolve them.",
+        "C": "Review and update the current architecture descriptions to reflect the present state, draw up target descriptions defining new value streams for the streaming business and a capability map for them, map value stream stages to capabilities, and perform a capability gap analysis.",
+        "D": "Model the current state of the business using capability, value stream, organization mapping, and information mapping, focus on improving the existing capabilities and value streams because baseline descriptions exist, and document where the business needs to change."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "B": "Best (5). Phase B focuses on the business: find where it does not support the change, describe the options and their costs, and work with stakeholders on the trade-offs, engaging them in the decision.",
+        "C": "Second (3). Updating descriptions and building target value streams and a capability map with a gap analysis is a valid Phase B technique, but it is more model-focused and does not yet require committing to the packaged solution.",
+        "D": "Third (1). Modeling only, with no stakeholder engagement, and it wrongly assumes the focus should be improving existing capabilities and value streams just because baselines exist.",
+        "A": "Distractor (0). Not Business Architecture; it is implicit architecture with the architect acting as SME and implementer, jumping to a vendor solution."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.6",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Logistics firm unifying tracking data",
+      "scenario": "You are a Senior Architect in the EA team of a logistics firm unifying shipment-tracking data across air, sea, and road divisions. The firm uses the TOGAF Standard; the CIO sponsors the EA program. A review of the Business Architecture with key stakeholders identified where current value streams and information flows produce inconsistent tracking and slow customer updates. The stakeholder communities' core motivations were confirmed as faster customer updates, a consistent end-to-end tracking experience, and driving down the sustained cost of running duplicated tracking systems. The team leader notes stakeholders agree the experience can improve but the information flows consume heavy IT resources that drive cost up.",
+      "q": "The team leader asks what you need to establish to address the motivation to drive down sustained cost. Which is the best answer?",
+      "o": {
+        "A": "Determine where the current Application Architecture and Data Architecture create the information-flow problems, identify the changes needed to fix the flows, look for incremental changes that improve the tracking experience, identify the one-time work and its impact on reducing sustainment cost, and check with stakeholders whether the experience improvements are worth the one-time and ongoing cost.",
+        "B": "Determine where the Application and Data Architecture fail to support customer updates and the tracking experience and drive cost up, focus on the logical application and logical data components, identify the changes that improve updates and cost, determine the work, and obtain stakeholder priorities on the application development, data structures, and interfaces.",
+        "C": "Identify where the Application Architecture (the information system services and logical application components) fails to support customer updates and the tracking experience and drives cost up, determine the changes to the information flows that enable faster updates and lower cost, and identify stakeholder priorities for the enhanced capability, improved value stream, and improved information flow.",
+        "D": "Produce application and data models of the current state, develop a Target Architecture model that enables faster updates and lower cost, create views describing the changes in those terms, and identify the gaps between current and target to build roadmap components."
+      },
+      "pts": {
+        "A": 5,
+        "B": 1,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). All changes carry value and cost; stakeholders accept a Target Architecture on the cost of change and expected outcome, not a data model. Phase C discovers where the current Application and Data Architecture cause the deficiency, then assesses the direct and sustainment cost of the change with stakeholders, feeding Phase E and Phase F.",
+        "C": "Second (3). It identifies stakeholder priorities and changes to information flows, but does not explicitly assess the one-time and ongoing costs of the change with stakeholders. This leaves cost-of-change information needed by Phases E and F incomplete.",
+        "B": "Third (1). No analysis of the information flows known to cause the deficiency; it focuses on logical components without a real Target Architecture and asks stakeholders for priorities on implementation detail.",
+        "D": "Distractor (0). Jumps to modeling and optimizing the Application and Data Architecture with no linkage to the value-stream and information-flow deficiencies from the Business Architecture."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U4.8",
+      "topic": "Phase D - Technology Architecture",
+      "stitle": "Scenario 4 - Broadcaster moving to cloud media processing",
+      "scenario": "You are an Architect in the EA team of a broadcaster moving its media processing and distribution onto a common cloud technology platform. The broadcaster uses the TOGAF Standard; the CIO sponsors the EA program. The Business, Data, and Application Architectures are approved by stakeholders and their platform requirements are understood. A Technology Portfolio Catalog and current infrastructure standards exist. Stakeholders are concerned about the resilience of live broadcast paths, the security of premium content, and the cost of egress at scale. The team leader asks how you would develop the Technology Architecture.",
+      "q": "Which is the best answer?",
+      "o": {
+        "A": "Produce a Platform Decomposition Diagram and Environments and Locations Diagram for the target platform, identify the technology gaps against the baseline, record the candidate roadmap components, and refine the diagrams as products are procured.",
+        "B": "Select the cloud platform the news division already uses, procure it to accelerate delivery, and document the resulting environment as the Technology Architecture so implementation can start immediately.",
+        "C": "Baseline the current technology using the Technology Portfolio Catalog and standards, define the target cloud platform needed to support the approved application and data components, perform a gap analysis against the standards, and work with stakeholders to trade off the live-path resilience, content security, and egress-cost implications of the candidate technology options.",
+        "D": "Document the target platform decomposition in detail, list the technology gaps, and hand them to the infrastructure team to select products, deferring the resilience and cost questions to Implementation Governance."
+      },
+      "pts": {
+        "A": 3,
+        "B": 0,
+        "C": 5,
+        "D": 1
+      },
+      "rat": {
+        "C": "Best (5). Phase D develops the Technology Architecture that supports the application and data components: baseline with the catalog and standards, define the target, run a gap analysis, and engage stakeholders on the resilience, content-security, and egress-cost trade-offs they raised. The architect assesses options so stakeholders can decide.",
+        "A": "Second (3). The platform and environment diagrams plus gap analysis and roadmap components are correct Phase D technique, but they do not surface the resilience, security, and cost trade-offs to stakeholders for decision.",
+        "D": "Third (1). It produces the target and gaps but hands product selection to the infrastructure team and defers the stakeholders' concerns to a later phase, which is too late.",
+        "B": "Distractor (0). Jumps to procuring a specific product on the news division's preference with no Technology Architecture, gap analysis, or trade-off, ignoring the stated concerns."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.5",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Pension provider consolidating administration systems",
+      "scenario": "You are an Enterprise Architect at a pension provider consolidating several policy-administration systems acquired over decades. The provider uses the TOGAF Standard; the CIO sponsors the EA program. An Architecture Vision and a set of domain architectures with identified gaps have been approved. Stakeholders require that member payments continue without interruption, that no big-bang cutover occurs, and that each step deliver measurable value. The team has identified the work needed to close the gaps.",
+      "q": "You have been asked to recommend how to move from the approved gaps to a deliverable plan. Which is the best answer?",
+      "o": {
+        "A": "Identify the dependencies among the changes and organize them into work packages that address the gaps, assess the value, effort, and risk of each change and work package against stakeholder priorities, define a series of Transition Architectures that each deliver measurable value, and document the work packages and Transition Architectures in the Architecture Roadmap.",
+        "B": "Ask stakeholders to state what must be done to implement the domain architectures, roll the result into an IT portfolio plan, and produce a comprehensive Target Architecture with detailed technology choices fixed for the next five years.",
+        "C": "Have each domain architect produce projects that close their own domain's gaps, sum the work per domain into the Implementation and Migration Plan, and record the deliverable timeline in the Architecture Roadmap.",
+        "D": "Implement the domain architectures immediately, revise all in-flight projects to align, expose all data and functionality through defined service interfaces, and publish the result as the Implementation and Migration Plan."
+      },
+      "pts": {
+        "A": 5,
+        "B": 1,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Phase E: identify dependencies, organize changes into work packages, assess value, effort, and risk against stakeholder priorities, and use Transition Architectures to deliver incremental value documented in the Architecture Roadmap, serving the uninterrupted-payments, no-big-bang constraints.",
+        "C": "Second (3). Names the Plan and Roadmap correctly but rolls up the work domain by domain in an uncoordinated way and does not use Transition Architectures for incremental value.",
+        "B": "Third (1). Considers stakeholder input but ends in fixed five-year technology choices, negating incremental value and the ability to absorb change.",
+        "D": "Distractor (0). Jumps to a technical solution (service interfaces), ignores transition and value, and does not follow Phase E guidance."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.6",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Merged retailers integrating e-commerce",
+      "scenario": "You are Lead Architect at a retail group formed by merging two chains. The operating model is unified and an EA project runs as part of the integration. The group uses the TOGAF ADM; the newly appointed CIO sponsors the EA program. An outline Implementation and Migration Plan is approved and detailed planning is under way. Others outside the EA team will fund, build, support, and use what is put in place. The store and e-commerce teams have resisted new merchandising and fulfillment processes. The CIO wants risk reduction, timely progress, and an incremental rollout with key value delivered in each increment.",
+      "q": "You have been asked to describe how the detailed Implementation and Migration Plan should be created. Which is the best answer?",
+      "o": {
+        "A": "Have the store and e-commerce Project Managers use the Phase E Implementation and Migration Strategy to build project plans on scope, budget, and time, define business value project by project, select the highest-value projects, and request funding from the Architecture Board.",
+        "B": "Have Business Planning, Portfolio Management, and Operations Management join the EA team in migration planning, create detailed resource estimates and business value for all deliverables, plan a series of Transition Architectures that consider stakeholder priorities, finalize the Implementation and Migration Plan, and complete the architecture development cycle once deliverables are done.",
+        "C": "Have the EA team's domain architects define a series of Transition Architectures to deliver value incrementally, create a prioritized activity list documented in the Implementation and Migration Plan with a detailed schedule in the Architecture Roadmap, and circulate these to the store and e-commerce teams and Executive Board so they are ready to fund the work.",
+        "D": "Finalize the plan with the domain architects and submit it to the Architecture Board for approval, incorporating its feedback; the plan includes a prioritized project list, approximate cost, estimated effort, schedule, and a sequenced timeline usable as the Architecture Roadmap."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "B": "Best (5). Phase F emphasizes collaborative planning with stakeholders inside and outside the organization (Business Planning, Portfolio, Operations Management with the EA team), resource estimates and business value for deliverables, and Transition Architectures based on stakeholder priorities.",
+        "C": "Second (3). It uses Transition Architectures but is EA-team-centric and merely circulates the result, lacking the close collaborative planning across the wider stakeholder groups.",
+        "D": "Third (1). Incomplete; it misses the collaborative planning with stakeholders inside and outside the organization that Phase F requires.",
+        "A": "Distractor (0). Hands strategic migration planning to Project Managers; TOGAF's intent is that the EA gives projects detailed guidance so they focus on operational, not strategic, issues."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.14",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Airport deploying a COTS resource-management system",
+      "scenario": "You are Lead Architect at an international airport operator with a mature EA practice using the TOGAF Standard; the CIO sponsors the EA program. After consulting key stakeholders, the CIO has decided to deploy a COTS airport resource-management system quickly and within budget. The system requires an integration bus that is not on the current infrastructure standards list. The Architecture Board noted the non-standard component and the need to protect performance and security KPIs. The CIO has approved the roadmap projects and appointed a project manager, and stresses that performance and security KPIs must be maintained or exceeded and the project must stay within budget.",
+      "q": "You have been asked to recommend a plan to implement the CIO's direction. Which is the best answer?",
+      "o": {
+        "A": "Eliminate the non-standard integration bus, create a revised plan and Architecture Contract to build a standards-compliant replacement in-house, tell the CIO this is lower cost long term, take the budget impact to the finance committee, and chair frequent project meetings to monitor compliance and schedule.",
+        "B": "Prepare a detailed risk assessment and impact analysis of the non-standard bus, hand the deliverables and deployment dates to the implementation team, obtain CIO approval before implementation starts, test the solution just before deployment to confirm performance, and archive the artifacts in the repository when done.",
+        "C": "Ask the vendor to modify the integration bus to meet current standards, build a prototype to explore options, obtain the internal development leads' approval, hand a schedule-focused project plan to the project manager, and review performance after go-live.",
+        "D": "Accept the direction, add the integration bus as an additional organizational standard in the Standards Library (noting the training and skills needed to support it), work with the implementation team to draw up an Architecture Contract, emphasize compliance reviews and performance and security testing during implementation, agree SLAs and dates with the business, and collect reusable artifacts afterward."
+      },
+      "pts": {
+        "A": 0,
+        "B": 1,
+        "C": 3,
+        "D": 5
+      },
+      "rat": {
+        "D": "Best (5). All within Phase G: accept the decision already made with stakeholders, add the new standard to the Standards Library (noting training and skills), draw up an Architecture Contract with the implementation team, emphasize compliance reviews and performance and security testing during implementation, agree SLAs and dates with the business, and collect reusable artifacts afterward.",
+        "C": "Second (3). The vendor change and prototype cost time and budget, which the scenario forbids; the project plan is the project manager's job; and reviewing performance only after go-live is too late.",
+        "B": "Third (1). Follows the direction but focuses on risk over co-existence, just hands over deliverables and dates with no negotiation on service levels, and tests too late (after the solution is built).",
+        "A": "Distractor (0). Reverses a decision the CIO already made with stakeholders, makes unsubstantiated cost claims, involves the finance committee irrelevantly, and has the architect chairing project meetings."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U4.2",
+      "topic": "Risk & Security (Phase E)",
+      "stitle": "Scenario 8 - Government agency sharing citizen data across departments",
+      "scenario": "You are a Senior Architect at a central government agency whose departments have historically kept citizen records separate. The agency uses the TOGAF Standard; the Permanent Secretary sponsors the EA program. A Statement of Architecture Work is approved and stakeholders have agreed to develop a Target Architecture to give citizens a single view of their interactions across departments. A set of domain architectures with identified gaps has been approved. At the latest executive meeting, senior officials raised a concern about the risk and security of sharing citizen data across departments.",
+      "q": "You have been asked to recommend an approach to address the concern raised. Which is the best answer?",
+      "o": {
+        "A": "Secure the migration activity with a risk assessment and Risk Mitigation Plan, including a risk classification scheme and risk-assessment worksheets, include a security impact analysis in migration planning, and ensure the initial level of risk is well understood before issuing the Architecture Contracts.",
+        "B": "Define the Architecture Roadmap and evaluate the security and risk impacts for the gaps being addressed, determine value, effort, and risk for each change and work package, ensure the stakeholders' security and risk concerns are addressed and that work packages deliver value including security and risk measures, and develop a Risk Mitigation Plan for the risks arising from the new architecture.",
+        "C": "Provide security training and awareness to the implementation team for correct deployment and operation, and conduct risk mitigation in the Technology Architecture phase to determine the agency's risk appetite, putting parallel systems in place if the risk will not be accepted.",
+        "D": "Iterate the ADM back to the Architecture Vision phase and classify the risks by time, cost, and scope so the right people manage them, then ensure the Architecture Contracts issued in Implementation Governance address the initial risks and include risk monitoring."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 0,
+        "D": 1
+      },
+      "rat": {
+        "B": "Best (5). Development is in Phase E. Per G152, risk is evaluated when drawing up the Architecture Roadmap, the stakeholders' security and risk concerns are addressed, work-package deliverables include risk and security measures, and a Risk Mitigation Plan is an appropriate deliverable.",
+        "A": "Second (3). Sound risk work but it omits evaluating the security and risk impacts when drawing up the Roadmap and does not explicitly address the stakeholders' concerns.",
+        "D": "Third (1). Risk classification is a valid activity, but these classifications do not address the concern, it ignores security, mitigation, and residual risk, and it defers to Implementation Governance, which is too late.",
+        "C": "Distractor (0). Training the implementation team does not fix inherent architecture issues, risk mitigation does not measure risk appetite, TOGAF does not place this in the Technology Architecture phase, and parallel systems are excessive and add risk."
+      }
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 5",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U2.4",
+      "topic": "Stakeholder Management (Phase A)",
+      "stitle": "Scenario 1 - Automotive maker, connected-vehicle platform",
+      "scenario": "You are an Enterprise Architect at a global automotive manufacturer building a connected-vehicle data platform. The company uses the TOGAF Standard; the Chief Technology Officer sponsors the EA program. A Phase A project has begun and scope is agreed. Engineering wants rich telemetry, the aftersales business wants predictive-service data, the legal office wants strict data minimization, and the plant operations group wants minimal disruption. Their objectives pull in different directions and the sponsor has said the initiative cannot proceed until the competing concerns are reconciled.",
+      "q": "You have been asked to recommend how to reconcile the competing stakeholder concerns in Phase A. Which is the best answer?",
+      "o": {
+        "A": "You adopt engineering's rich-telemetry position as the target because it is the most technically ambitious, and ask the other groups to align to it.",
+        "B": "You identify the four groups and their concerns, use the architecture trade-off method to define and assess alternatives across the affected domains, present the value, cost, and risk of each so the stakeholders can trade off their competing concerns and select the target, and record the decision.",
+        "C": "You escalate to the Chief Technology Officer and ask the sponsor to decide the target so the project can proceed without prolonged debate among the groups.",
+        "D": "You collect every group's requirements and design a target that includes them all, presenting it as the reconciled solution that satisfies each group."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). Choosing the most ambitious position ignores the other concerns and presents no trade-off, so stakeholders have not made an informed decision across competing interests.",
+        "B": "Best (5). Trade-off analysis surfaces alternatives and their implications so stakeholders make an informed decision across competing concerns; the architect assesses and facilitates while stakeholders select the target.",
+        "C": "Second (3). Sponsor involvement can break a deadlock, but handing the decision up without first assessing alternatives and trade-offs skips the architect's job of informing the decision; it is a fallback, not the recommended approach.",
+        "D": "Distractor (0). A design that bundles everything hides the trade-offs, inflates cost and risk (and conflicts with data minimization), and is the architect imposing a solution rather than facilitating a stakeholder decision."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U4.3",
+      "topic": "Phase B - Business Architecture",
+      "stitle": "Scenario 2 - Automotive maker, aftersales service model",
+      "scenario": "You are an Architect in the automotive company's EA team working the Business Architecture for a new predictive aftersales service. The company uses the TOGAF Standard; the CTO sponsors the program. Key stakeholders have agreed the work at a high level and a Baseline Business Architecture exists. The aftersales business goals were rewritten after a recent strategy change, and the dealer network and the central service organization disagree about what those goals now mean.",
+      "q": "You have been asked what information you need to gather before producing the Phase B outputs. Which is the best answer?",
+      "o": {
+        "A": "You confirm the business principles, goals, and drivers for the aftersales service, and where they are unclear or disputed you return to the originators of the Statement of Architecture Work to clarify them before developing the target business architecture.",
+        "B": "You proceed to model the target capabilities and value streams, since the strategy change already set the direction and the dealer and service disagreement will settle during review.",
+        "C": "You take the business principles, goals, and drivers from the EA team's own strategy records and adopt them as the authoritative business direction.",
+        "D": "You gather the disputed goals and adopt the interpretation that best supports the predictive-service platform you expect to build, documenting it as the agreed context."
+      },
+      "pts": {
+        "A": 5,
+        "B": 1,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). Business principles, goals, and drivers give the Phase B context, and when they are unclear the guidance is to return to the originators of the Statement of Architecture Work to clarify before proceeding.",
+        "B": "Third (1). Modeling the target without confirming disputed goals risks building on the wrong context, and leaving the disagreement to settle in review is not the recommended approach.",
+        "C": "Second (3). Business principles, goals, and drivers are the right information, but they originate with the business, not the EA team's records, so adopting the EA copy without clarifying the dispute misattributes ownership.",
+        "D": "Distractor (0). Choosing the interpretation that suits an expected solution reverses the direction of the work and lets the architect set business goals that belong to the business."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.5",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Automotive maker, telemetry data pipeline",
+      "scenario": "You are a Senior Architect in the automotive company's EA team responsible for the Application and Data Architecture of the connected-vehicle platform. The company uses the TOGAF Standard; the CTO sponsors the program. The Business Architecture is agreed with stakeholders. Vehicle telemetry must flow to engineering analytics, aftersales, and a warranty system, each needing different subsets and formats, and stakeholders are concerned about the cost and reliability of these data flows. You are starting Phase C.",
+      "q": "You have been asked what information is most relevant to develop the Phase C outputs. Which is the best answer?",
+      "o": {
+        "A": "You gather only the target analytics data model, since the platform is new and there are no existing interfaces worth considering.",
+        "B": "You identify the telemetry data and the information each consumer needs, the content and format of each exchange, and how applications must share information and services, and determine where the current Application and Data Architecture fails to support these flows so the changes and cost can be assessed with stakeholders.",
+        "C": "You identify the consumers and their data needs, then design the streaming technology, message brokers, and network mechanisms that will carry the telemetry to each consumer.",
+        "D": "You catalog the applications and data entities and produce an application communication diagram, recording the interfaces without analyzing whether they meet the target telemetry needs."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Discarding the baseline and the exchanges ignores the information sharing that is the core Phase C concern and precludes a gap analysis against the target.",
+        "B": "Best (5). Phase C detail is the content of the information and service exchanges and how applications share them; finding where the current architecture fails to support the flows lets the changes and cost be assessed with stakeholders.",
+        "C": "Third (1). Streaming technology, brokers, and network mechanisms are Phase D concerns, not the Application and Data information needed in Phase C.",
+        "D": "Second (3). The catalog and application communication diagram are valid Phase C artifacts, but without analyzing them against the target telemetry needs they do not surface the changes stakeholders must decide on."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U4.8",
+      "topic": "Phase D - Technology Architecture",
+      "stitle": "Scenario 4 - Automotive maker, edge and cloud platform",
+      "scenario": "You are the Technology Architect in the automotive company's EA team. The company uses the TOGAF Standard; the CTO sponsors the program. The Business, Data, and Application Architectures for the connected-vehicle platform are agreed with stakeholders. The current on-premise infrastructure cannot handle the volume and latency of vehicle telemetry, and stakeholders are concerned about the cost, data-sovereignty risk, and operational impact of any platform change.",
+      "q": "You have been asked how you would identify the required changes in the Technology Architecture. Which is the best answer?",
+      "o": {
+        "A": "You select an edge-to-cloud platform from a leading vendor that meets the volume and latency needs, define the migration steps, and present the implementation schedule to stakeholders for approval.",
+        "B": "You determine where the current technology platform does not meet the target volume, latency, and sovereignty needs, identify the technology gaps and the work to close them, describe the options with cost, effort, and risk, and work with stakeholders on the trade-offs so they can decide.",
+        "C": "You build a baseline Technology Portfolio Catalog and a target platform decomposition, run a technology gap analysis against the target platform, and document candidate roadmap components for the gaps.",
+        "D": "You catalog the current infrastructure, flag the components that cannot meet the telemetry load, and pass the list to the infrastructure team to plan replacements while you move to Phase E."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Distractor (0). Selecting a specific vendor platform and presenting a schedule jumps to a solution and acts as implementer instead of developing the Technology Architecture for a stakeholder decision.",
+        "B": "Best (5). Phase D finds where the technology does not meet the target, identifies the gaps and work, and presents options with cost, effort, and risk so stakeholders make the trade-off decision that addresses their cost, sovereignty, and operational concerns.",
+        "C": "Second (3). Baseline and target catalogs plus a gap analysis are valid Phase D techniques that surface candidate roadmap components, but this is model-focused and does not engage stakeholders on the trade-offs they raised.",
+        "D": "Third (1). Cataloging and flagging is partial Phase D work, but delegating the change decision to the infrastructure team skips the target, options, and stakeholder trade-offs."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.3",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Automotive maker, implementation approach",
+      "scenario": "You are an Enterprise Architect at the automotive company, which uses the TOGAF Standard; the CTO sponsors the program. An Architecture Vision and domain architectures with gaps are approved for the connected-vehicle platform. The plant and warranty systems are stable and must keep running, while the business wants new predictive-service capabilities to market quickly. Stakeholders want early value from the new capabilities while limiting disruption to the systems that run current operations.",
+      "q": "You have been asked to recommend the implementation approach that best fits the situation. Which is the best answer?",
+      "o": {
+        "A": "You choose a greenfield approach and rebuild the whole estate as new capability, retiring the stable systems on a fixed date so the platform is consistent from the start.",
+        "B": "You assess the situation against the three basic implementation approaches, recognize a mix of a stable, functionally driven need and new revolutionary capability, and recommend a combined approach that protects the stable plant and warranty systems while delivering the new capabilities incrementally through Transition Architectures.",
+        "C": "You apply a purely revolutionary approach across the whole estate to deliver all the new capabilities at once, since the business wants them quickly.",
+        "D": "You keep every system as-is and add the new capabilities only where they can bolt on without touching the stable systems, deferring any structural change indefinitely."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 0,
+        "D": 3
+      },
+      "rat": {
+        "A": "Third (1). A greenfield rebuild with a fixed retirement date ignores the need to protect the stable operational systems and the call for early, incremental value.",
+        "B": "Best (5). Phase E weighs the three basic approaches; a combined approach fits a mix of stable functional needs and new revolutionary capability, using Transition Architectures to deliver value incrementally while protecting the stable systems.",
+        "C": "Distractor (0). A wholesale revolutionary approach maximizes disruption to the very systems stakeholders want protected and ignores the incremental-value concern.",
+        "D": "Second (3). A conservative bolt-on limits disruption and can deliver some value, but deferring all structural change indefinitely will not deliver the new capabilities the business needs and is not a balanced combined approach."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.5",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Automotive maker, plant rollout sequence",
+      "scenario": "You are Lead Architect at the automotive company, which uses the TOGAF ADM; the CTO sponsors the program. An outline Implementation and Migration Plan is approved and detailed planning is under way. Rollout spans several plants and the aftersales network, and Manufacturing IT, Portfolio Management, and Operations will fund, build, and run the result. The sponsor wants each transition state stable and value-bearing and wants the wider stakeholder groups committed to the sequence.",
+      "q": "You have been asked how the detailed migration plan and its transition states should be produced. Which is the best answer?",
+      "o": {
+        "A": "The EA team's domain architects define the Transition Architectures and the plant sequence, document them in the plan, and pass them to Manufacturing IT and Operations for scheduling once the EA work is finished.",
+        "B": "Business Planning, Portfolio Management, Manufacturing IT, and Operations join the EA team in migration planning; you create detailed resource estimates and business value for the deliverables, sequence a series of Transition Architectures that are each stable and value-bearing based on stakeholder priorities, confirm the Architecture Roadmap, and finalize the plan.",
+        "C": "You finalize the plan and transition states with the domain architects, submit it to the Architecture Board for approval, and incorporate feedback; the plan lists prioritized projects with approximate cost, effort, and a sequenced timeline used as the roadmap.",
+        "D": "Project Managers at each plant take the Phase E strategy, build project plans on scope, budget, and time, define value per project, and select and schedule the transition states themselves, requesting funding from the Architecture Board."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). It sequences Transition Architectures but is EA-team-centric and treats the wider groups as schedulers after the fact, lacking the collaborative planning Phase F calls for.",
+        "B": "Best (5). Phase F is collaborative planning with stakeholders inside and outside the organization, with resource estimates and business value for deliverables and a sequence of stable, value-bearing Transition Architectures based on stakeholder priorities, then confirming the roadmap and finalizing the plan.",
+        "C": "Third (1). Board approval and a prioritized project list are part of it, but this omits the collaborative planning with the funding, building, and operating stakeholders.",
+        "D": "Distractor (0). This hands strategic migration and transition sequencing to Project Managers, whereas the EA should give projects detailed guidance so they focus on operational issues."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.14",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Automotive maker, contracting the platform build",
+      "scenario": "You are Lead Architect at the automotive company, which has a mature EA capability using the TOGAF Standard; the CTO sponsors the program. After consulting stakeholders, the sponsor has engaged an external platform provider to build the connected-vehicle platform, approved the roadmap projects, and appointed a project manager. The Architecture Board wants assurance that the provider will build to the target architecture and that compliance is enforceable through delivery. You must set up how the architecture is communicated to and enforced with the provider.",
+      "q": "You have been asked how implementation governance should communicate the architecture to the provider. Which is the best answer?",
+      "o": {
+        "A": "You issue the provider the approved Architecture Definition Document and requirements, take a signed acknowledgement of receipt, and rely on the project manager's status reports to confirm compliance.",
+        "B": "You rely on the Statement of Architecture Work agreed with the sponsor as the governing agreement for the provider, since it already defines scope and acceptance.",
+        "C": "You draw up an Architecture Contract (an architecture design and development contract) with the provider specifying deliverables, quality, and fitness for purpose, and run architecture compliance reviews at defined checkpoints during implementation, with the architect advising and the stakeholders deciding on any dispensation.",
+        "D": "You let the provider follow their own delivery method, review the finished platform against the target architecture at go-live, and raise non-conformance as defects."
+      },
+      "pts": {
+        "A": 1,
+        "B": 3,
+        "C": 5,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). Handing over documents with a receipt and relying on PM status reports does not create an enforceable architecture agreement or the compliance reviews Phase G governance requires.",
+        "B": "Second (3). The Statement of Architecture Work is an architecture contract type, but it is between the architecting organization and the sponsor; the provider needs an architecture design and development contract, so this is close but the wrong contract for the partner.",
+        "C": "Best (5). Phase G communicates and enforces the architecture through an Architecture Contract with the development partner plus compliance reviews at checkpoints during implementation; the architect assesses and advises while stakeholders decide on dispensations.",
+        "D": "Distractor (0). Reviewing only at go-live evaluates after the fact rather than during implementation and provides no governing agreement or in-flight compliance control."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U6.1",
+      "topic": "Architecture Change Management",
+      "stitle": "Scenario 8 - Automotive maker, new-technology change request",
+      "scenario": "You are Lead Architect at the automotive company. The connected-vehicle platform is deployed and under Architecture Change Management. The company uses the TOGAF Standard; the CTO sponsors the program. A new vehicle-to-everything communication standard has emerged that could significantly extend the platform's capabilities, and the engineering lead has raised a Change Request proposing its adoption. Stakeholders want to know whether this is a manageable update or something that warrants a new architecture cycle.",
+      "q": "You have been asked how to handle the Change Request. Which is the best answer?",
+      "o": {
+        "A": "You adopt the new standard right away by extending the platform, treating it as a routine technology refresh recorded in the repository.",
+        "B": "You assess the Change Request in the change management process, evaluate its impact on the current architecture, requirements, and business value, determine whether it can be met by a change to the existing architecture or requires a new ADM cycle, and recommend to the stakeholders who decide.",
+        "C": "You immediately launch a full new ADM cycle from the Architecture Vision to redesign the platform around the new communication standard.",
+        "D": "You log the Change Request and prepare an impact assessment noting affected requirements and stakeholder priority, referencing it in the repository for consideration at the next architecture review."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Adopting the standard at once as a routine refresh skips the impact assessment and takes a decision that belongs to stakeholders.",
+        "B": "Best (5). Phase H assesses the Change Request, evaluates impact on architecture, requirements, and value, and determines whether a change to the existing architecture suffices or a new ADM cycle is warranted, with stakeholders deciding.",
+        "C": "Third (1). Jumping to a full new ADM cycle before assessing impact over-reacts; Phase H first determines whether a lighter change suffices.",
+        "D": "Second (3). Logging the request and an impact assessment are correct inputs, but deferring the decision to the next review rather than completing the Phase H classification and recommendation now leaves it unresolved."
+      }
+    }
+  ]
+}

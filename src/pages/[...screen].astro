@@ -1,0 +1,48 @@
+---
+import App from '../app.jsx';
+import '../styles.css';
+
+export function getStaticPaths() {
+  return [undefined,'practice','my-data'].map(screen=>({params:{screen}}));
+}
+const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
+const page=Astro.params.screen || 'home';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#2563eb" />
+    <title>TOGAF Practice Workspace</title>
+    <script is:inline>
+      (() => {
+        const system = matchMedia('(prefers-color-scheme: dark)');
+        let preference;
+        try { preference = localStorage.getItem('togaf.generated.theme'); } catch {}
+        const apply = () => {
+          document.documentElement.dataset.theme = preference === 'light' || preference === 'dark' ? preference : system.matches ? 'dark' : 'light';
+          window.dispatchEvent(new Event('themechange'));
+        };
+        window.toggleTheme = () => {
+          preference = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+          try { localStorage.setItem('togaf.generated.theme', preference); } catch {}
+          apply();
+        };
+        system.addEventListener('change', apply);
+        window.addEventListener('storage', event => {
+          if (event.key === 'togaf.generated.theme' || event.key === null) { preference = event.newValue; apply(); }
+        });
+        apply();
+      })();
+    </script>
+    <script is:inline define:vars={{base,page}}>window.TOGAF_GENERATED=true;window.TOGAF_REACT=true;window.TOGAF_BASE=base;window.TOGAF_PAGE=page;</script>
+    <script is:inline src={`${base}records.js`}></script>
+    <script is:inline src={`${base}all-banks.js`}></script>
+    <script is:inline src={`${base}exam-engine.js`}></script>
+  </head>
+  <body>
+    <App client:only="react" />
+    <noscript>This practice app needs JavaScript.</noscript>
+  </body>
+</html>

@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 11",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U3.2",
+      "topic": "Phase A - Architecture Vision",
+      "stitle": "Scenario 1 - Water utility, readiness before commitment",
+      "scenario": "A municipal water utility uses the TOGAF Standard to plan a digital field-service transformation. In Phase A, the sponsor has agreed the service goals and requested an Architecture Vision covering all districts. Interviews show that several districts lack supervisors able to train crews, and their current working practices differ. Funding for software exists, but no training capacity has been reserved. The sponsor asks whether the proposed scope is credible before approving further architecture work.",
+      "q": "Which response best supports the decision now required?",
+      "o": {
+        "A": "Assess readiness factors with district representatives, record the results in the Capability Assessment, and use the findings to shape scope, identify enabling activities and risks, and support approval of the proposed architecture work.",
+        "B": "Record the training shortfall as a transformation risk and agree an owner, but keep the proposed scope unchanged until migration planning can examine whether districts can absorb the change.",
+        "C": "Confirm that the software budget is available, record the training issue in meeting minutes, and recommend approval because district operating procedures can be designed during implementation.",
+        "D": "Treat the sponsor's request for all districts as evidence of readiness and omit further assessment, since an architecture team should not question a funded business request."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). The immediate task is Phase A readiness and scope, not detailed rollout scheduling. Assessing the districts' ability to change provides evidence for a credible scope and identifies necessary activities and risks. ADM section 3.3.5 places readiness results in the Capability Assessment and uses them to shape scope.",
+        "B": "Second (3). Recording the risk and assigning an owner are useful. However, postponing its scope implications leaves the sponsor without the readiness evidence requested before approval.",
+        "C": "Third (1). Budget confirmation and recording the issue provide limited evidence, but funding software does not establish training capacity or readiness. Leaving procedures to implementation does not answer the scope question.",
+        "D": "Distractor (0). A funded request expresses intent, not demonstrated capacity to change. Omitting the assessment discards the contrary evidence from the districts."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U2.4",
+      "topic": "Architecture Trade-offs",
+      "stitle": "Scenario 2 - Water utility, permitted alternatives",
+      "scenario": "The utility is comparing ways to make customer consumption data available to billing and leak-detection services. The approved requirements prohibit sending identifiable customer data outside the utility's jurisdiction. A low-cost alternative violates that constraint; two other alternatives meet it but differ in delivery time, operating cost, and detection accuracy. The operations director values earlier detection while finance favors lower ongoing cost. They ask the architect for a decision-ready comparison.",
+      "q": "How should the architect use trade-off analysis in this situation?",
+      "o": {
+        "A": "Rank all three alternatives by cost and let the two directors vote on whether the saving justifies the data transfer, recording the vote as architecture approval.",
+        "B": "Compare the two permitted alternatives against the agreed outcome and cost criteria, document the excluded alternative's constraint violation, and present impacts and uncertainties so the authorized stakeholders can select and approve an alternative.",
+        "C": "Exclude the violating alternative and send both remaining designs for stakeholder review with their costs, leaving the different delivery times and detection outcomes unexamined until procurement.",
+        "D": "Choose the permitted alternative with the lowest operating cost and notify operations, since a quantitative cost comparison is more objective than its preference for earlier detection."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Distractor (0). The directors' vote does not waive the scenario's approved data-location constraint. Cost is not permission to disregard a mandatory requirement.",
+        "B": "Best (5). It distinguishes a constraint from criteria that can be traded off. The permitted alternatives are compared on the actual competing concerns, with sufficient evidence for an authorized decision. Sources: ADM Techniques, Architecture Alternatives and Trade-Offs; G186 section 6.2.",
+        "C": "Second (3). It respects the constraint and provides costs and stakeholder review. However, omitting timing and detection outcomes prevents the review from resolving the stated trade-off.",
+        "D": "Third (1). It considers a permitted alternative and a relevant cost measure, but substitutes the architect's selection rule for an informed decision across both concerns."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.5",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Water utility, tracing a reading",
+      "scenario": "The target Business Architecture requires one accountable owner for each corrected meter reading and an auditable explanation of changes used in billing. In Phase C, an existing application inventory lists the meter collection, field-service, and billing systems, but does not show who creates or changes readings, where correction history is kept, or which applications consume corrections. Some existing systems will remain. The team needs enough information to describe baseline and target data handling and identify gaps.",
+      "q": "What should the team establish next?",
+      "o": {
+        "A": "Complete the physical database schema and choose a database engine for the replacement billing system, using its audit features as the definition of the target data handling.",
+        "B": "Extend the inventory with database names and storage volumes, then record missing capacity as the principal data gap without investigating correction ownership or flows.",
+        "C": "Identify reading and correction entities, their business ownership and lifecycle, the applications that create and consume them, and required access and audit information; model relevant baseline and target relationships and compare them against the business requirements.",
+        "D": "Document the target reading entities and their required audit history, and obtain agreement from billing, but defer analysis of the retained systems and correction exchanges until implementation."
+      },
+      "pts": {
+        "A": 0,
+        "B": 1,
+        "C": 5,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). It defines the target from a chosen database product before establishing the required data and application relationships. Detailed physical design does not supply the missing Phase C information.",
+        "B": "Third (1). Database inventory and volume can be useful supporting information. They do not explain ownership, correction history, or exchanges, and the scenario provides no basis for making capacity the principal gap.",
+        "C": "Best (5). The information directly supports the agreed accountability and audit requirements and includes retained systems needed for a meaningful baseline-to-target comparison. Sources: ADM Data Architecture sections 6.3.1 to 6.3.4 and Application Architecture section 7.3.",
+        "D": "Second (3). Target entities, audit requirements, and billing agreement are relevant. However, excluding retained systems and exchanges prevents identification of the changes needed across the existing landscape."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U4.8",
+      "topic": "Phase D - Technology Architecture",
+      "stitle": "Scenario 4 - Water utility, evidence for continuity",
+      "scenario": "Business and Information Systems Architectures have established that crews must receive emergency work orders when one communications site fails. In Phase D, the team has a Technology Portfolio Catalog and site diagram. The current network has shared power and communications dependencies, but their effect on the required service is not modeled. Two platform approaches appear viable. The sponsor asks what architectural analysis is needed before choosing a technology direction.",
+      "q": "Which approach best completes the required analysis?",
+      "o": {
+        "A": "Purchase the approach with the highest advertised availability and make successful installation the acceptance criterion, since the target application requirements are already agreed.",
+        "B": "Model the relevant baseline failure dependencies and target technology services, compare the two approaches against the service requirement and applicable standards, identify gaps and implications, and review the alternatives with the relevant stakeholders.",
+        "C": "Model the target technology services and compare the approaches against the continuity requirement, but assume the existing site dependencies can be handled by the selected supplier without baseline analysis.",
+        "D": "Update the equipment ages and maintenance costs in the catalog and recommend replacing the oldest devices first, postponing the service-dependency analysis until deployment testing."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Distractor (0). Advertised product availability does not demonstrate continuity across the utility's shared dependencies. It also replaces the service requirement with installation success.",
+        "B": "Best (5). The technology analysis is driven by the agreed service requirement and includes the baseline dependencies necessary to assess target alternatives and gaps. Sources: ADM sections 8.3.2 to 8.3.5 and stakeholder review in Phase D.",
+        "C": "Second (3). Target services and comparison against the continuity requirement are appropriate. Assuming away the known shared dependencies leaves a material uncertainty in that comparison.",
+        "D": "Third (1). The catalog update provides relevant asset information, but device age is not evidence of the failure dependencies that threaten the required service. Testing later does not supply the current decision evidence."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.5",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Water utility, usable transition states",
+      "scenario": "Approved domain architectures identify three changes: a shared work-order identifier, new field dispatch, and customer notifications. The Phase E dependency analysis shows that reliable notifications require both the identifier and dispatch status updates. Field dispatch can deliver a measurable reduction in emergency response time before notifications are available. Districts can absorb only one major operating change at a time. The sponsor wants useful intermediate states rather than a list of component installation dates.",
+      "q": "How should the architect define the transitions?",
+      "o": {
+        "A": "Define a transition after each component installation, even if no operating service can use it yet, and report installed components as the business value delivered.",
+        "B": "Build the notifications interface first because customers can see it, and assume the identifier and dispatch data will be available when the first messages are sent.",
+        "C": "Keep the dependency order and define only the final target as an operational milestone, leaving intermediate capability and benefit descriptions out of the roadmap.",
+        "D": "Define operational transition states using the dependency analysis and absorption capacity, including dispatch with its required identifier as a useful increment, followed by notifications; specify the benefit of each transition and consolidate them with work packages in the Architecture Roadmap."
+      },
+      "pts": {
+        "A": 1,
+        "B": 0,
+        "C": 3,
+        "D": 5
+      },
+      "rat": {
+        "A": "Third (1). Component milestones help track implementation, but they are not sufficient descriptions of usable architecture states or measurable business benefit.",
+        "B": "Distractor (0). Visibility to customers does not remove the documented dependencies. This sequence risks releasing notifications without the data needed to make them reliable.",
+        "C": "Second (3). Respecting dependencies is necessary and improves feasibility. However, describing only the final operating milestone does not answer the request for useful intermediate states.",
+        "D": "Best (5). It uses dependencies and change capacity to define increments that support operations and measurable benefit. The roadmap connects those states to the work that realizes them."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.6",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Water utility, competing migration windows",
+      "scenario": "A draft Architecture Roadmap and outline Implementation and Migration Plan are available. During detailed migration planning, two high-value projects request the same three integration engineers for the same month. Operations also prohibits district cutovers during the annual flood-readiness exercise. The business-value estimates have been agreed, but the resource estimates did not account for these conflicts. The sponsor asks for a feasible coordinated plan.",
+      "q": "Which response best fits this task?",
+      "o": {
+        "A": "Bring project, portfolio, and operations representatives into planning, validate resource availability and cutover constraints, reassess feasible sequencing with cost, benefit, and risk, agree priorities, and update the roadmap and detailed plan accordingly.",
+        "B": "Approve both original schedules because the projects have agreed business value, and instruct the shared engineers to resolve the conflict within their delivery teams.",
+        "C": "Identify the resource and cutover conflicts, move the lower-value project after the exercise, and submit the revised sequence for approval without checking whether the required engineers are then available.",
+        "D": "Record both conflicts in the risk register and retain the original plan, asking the project managers to report whether the risks materialize at the first cutover."
+      },
+      "pts": {
+        "A": 5,
+        "B": 0,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Best (5). The task is coordinated, feasible migration planning. Validated resource availability, operating constraints, and agreed prioritization support a plan that the affected groups can execute.",
+        "B": "Distractor (0). Agreed business value does not create resource capacity or remove the cutover prohibition. Approving known conflicting schedules passes an unresolved planning problem to implementation.",
+        "C": "Second (3). It addresses the conflicts and seeks approval, but an unchecked replacement date may reproduce the resource problem. Ranking by value alone also omits the revised cost and risk effects.",
+        "D": "Third (1). Recording the conflicts creates visibility, but they are already known constraints rather than merely possible events. Waiting for cutover does not produce the feasible plan requested."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.12",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Water utility, missing audit evidence",
+      "scenario": "The implementation team has reached an agreed Architecture Contract checkpoint. Demonstrations show that corrected readings reach billing, but the required link to the authorized correction approver is absent. The contract makes this traceability a mandatory acceptance condition. The delivery manager asks the architect to sign off now and add the link later to preserve the launch date. The architecture governance process provides for review of deviations and decisions by the designated authority.",
+      "q": "What should the architect do at this checkpoint?",
+      "o": {
+        "A": "Sign off because the visible billing function works, and accept the delivery manager's verbal promise as replacement evidence for the missing approval link.",
+        "B": "Report the missing link as a finding and request a correction estimate, but issue an unqualified compliant assessment so the launch can continue while the estimate is prepared.",
+        "C": "Document the demonstrated behavior and the unmet condition, assess the deviation and impacts against the architecture and contract, recommend corrective action or an appropriate governed exception for authorized decision, and retain the assessment and decision record.",
+        "D": "Document the unmet condition and withhold a compliant assessment, requesting a remediation plan from the team, but leave the deviation outside the established governance decision process."
+      },
+      "pts": {
+        "A": 0,
+        "B": 1,
+        "C": 5,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). Working billing functionality does not satisfy the separate mandatory traceability condition. A verbal promise is not evidence of conformance and does not authorize an exception.",
+        "B": "Third (1). Reporting the finding and requesting an estimate are useful, but an unqualified compliant assessment contradicts the evidence and can mislead the launch decision.",
+        "C": "Best (5). It separates evidence, assessment, recommendation, and authorized decision at the planned checkpoint. An exception is considered through governance rather than self-granted by the architect. Sources: ADM section 11.3.4; EA Capability and Governance, Architecture Compliance; G186 section 15.2.",
+        "D": "Second (3). It correctly records the gap and avoids a false compliant assessment. However, excluding the deviation from the decision process leaves the appropriate authority without a formal basis to decide the response."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U1.11",
+      "topic": "Digital Enterprise",
+      "stitle": "Scenario 8 - Water utility, growing product teams",
+      "scenario": "The utility now has six autonomous digital product teams serving field operations, customers, and billing. Each team can deliver its own backlog, but uncoordinated changes to shared event meanings have broken other products. A proposal would require every internal code change to pass through a central architecture committee. The sponsor wants reliable interaction between products without turning routine team work into a coordination bottleneck.",
+      "q": "Which explanation of the Enterprise Architect's contribution best fits this situation?",
+      "o": {
+        "A": "In a Team of Teams context, architecture should focus only on each team's internal design; cross-product failures should be treated as unrelated defects owned by the receiving teams.",
+        "B": "In a Team of Teams context, architecture should make product dependencies and essential interactions visible, help teams agree shared event contracts and change coordination, and keep that coordination proportionate so local decisions do not all become central approvals.",
+        "C": "Architecture should document the shared events and dependencies, but leave changes to their meanings uncoordinated because product autonomy excludes cross-team agreements.",
+        "D": "Architecture should require central approval of every internal change, thereby ensuring interaction consistency through a single decision point even when a change has no cross-product effect."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Distractor (0). The observed failures arise from shared meanings and interdependencies. Treating them as unrelated receiving-team defects ignores the coordination problem of a Team of Teams.",
+        "B": "Best (5). The Team of Teams context increases the value of architecture in enabling essential interactions, appropriate coupling, and portfolio visibility while limiting coordination overhead. Shared event agreements apply that guidance to the failure described.",
+        "C": "Second (3). Documenting events and dependencies supplies useful visibility, but does not control the uncoordinated semantic changes causing the failures. Autonomy does not preclude agreements at shared boundaries.",
+        "D": "Third (1). Central review may detect some interaction problems, but reviewing every internal change imposes coordination overhead regardless of its effect, contrary to the sponsor's need and the context's balance."
+      }
+    }
+  ]
+}

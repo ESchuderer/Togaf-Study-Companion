@@ -1,0 +1,216 @@
+{
+  "part": 2,
+  "title": "Part 2 Mock Exam - Set 3",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P2-U2.3",
+      "topic": "Stakeholder Management (Phase A)",
+      "stitle": "Scenario 1 - Regional credit union, digital banking",
+      "scenario": "You are an Enterprise Architect at a regional credit union launching a digital banking service. The credit union uses the TOGAF Standard; the CEO sponsors the EA program. A Phase A project is under way and scope is agreed. The member-services managers, the risk and compliance office, and the branch network each have strong and differing views, and several have limited time and tend to disengage from architecture work. The CEO wants their engagement and requirements managed so the initiative is not derailed later by a group that felt unheard.",
+      "q": "You have been asked to recommend how to manage stakeholder engagement and requirements in Phase A. Which is the best answer?",
+      "o": {
+        "A": "You send a project briefing to all stakeholder groups, ask them to reply with their requirements by a deadline, and record whatever is returned as the agreed requirements.",
+        "B": "You identify the stakeholders and their concerns, classify their influence and involvement in a Stakeholder Map, tailor the engagement and communication approach to each group, capture and validate their requirements, and keep engaging them through the phase.",
+        "C": "You focus engagement on the risk and compliance office because their requirements are mandatory, and gather the other groups' requirements only if time allows.",
+        "D": "You defer stakeholder engagement to Phase B when the business architecture is being developed, and in Phase A produce the Architecture Vision from the CEO's brief alone."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). A broadcast briefing with a reply-by deadline is not managed engagement; groups that disengage will not respond, and unvalidated returns are not agreed requirements.",
+        "B": "Best (5). Managing engagement and requirements in Phase A uses the Stakeholder Map, tailored communication and engagement for each group, captured and validated requirements, and continued engagement through the phase, directly addressing the disengagement risk.",
+        "C": "Second (3). Prioritizing mandatory compliance requirements is reasonable, but treating the other groups as optional recreates the very risk of a group feeling unheard.",
+        "D": "Distractor (0). Stakeholder identification and engagement is core Phase A work; producing the Vision from the sponsor's brief alone skips the concerns and requirements the phase must capture."
+      }
+    },
+    {
+      "n": 2,
+      "lo": "P2-U4.4",
+      "topic": "Phase B - Business Architecture",
+      "stitle": "Scenario 2 - Credit union, member onboarding redesign",
+      "scenario": "You are an Architect in the credit union's EA team working the Business Architecture for member onboarding. The credit union uses the TOGAF Standard; the CEO sponsors the program. Key stakeholders have agreed the work at a high level and a Baseline Business Architecture exists. The Board wants faster digital onboarding without losing the branch-based relationship model. A packaged onboarding product is available but fits the branch processes poorly.",
+      "q": "The team leader asks how you would identify the required changes in the Business Architecture. Which is the best answer?",
+      "o": {
+        "A": "You review and update the current architecture descriptions, draw up target descriptions with new value streams and a capability map for digital onboarding, map value stream stages to capabilities, and run a capability gap analysis.",
+        "B": "You determine where the business (organizational design, onboarding processes, and so on) does not support faster digital onboarding, identify what must change and the work needed, describe the options and costs to stakeholders so they can decide, and work with them on the trade-offs.",
+        "C": "You model the current state with capabilities, value streams, and organization mapping, focus on improving capabilities and value streams because baselines exist, and document where the business must change.",
+        "D": "You obtain the packaged onboarding product's documentation, define the changes to align it with the branch processes, sequence them in a roadmap, and get vendor references to confirm the delivery date."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). Updating descriptions and a capability gap analysis is a valid technique to find change, but it is model-focused and commits to less stakeholder decision-making than the situation needs.",
+        "B": "Best (5). Phase B finds where the business does not support the change, describes options and costs, and works with stakeholders on trade-offs so they make an informed decision that keeps the branch relationship model in view.",
+        "C": "Third (1). Modeling only, with no stakeholder engagement, and it wrongly assumes the focus is capabilities and value streams simply because baselines exist.",
+        "D": "Distractor (0). This is not Business Architecture; it is implicit architecture with the architect acting as SME and implementer, jumping to a vendor solution."
+      }
+    },
+    {
+      "n": 3,
+      "lo": "P2-U4.6",
+      "topic": "Phase C - Information Systems Architecture",
+      "stitle": "Scenario 3 - Credit union, fraud data across channels",
+      "scenario": "You are a Senior Architect in the credit union's EA team responsible for the Application and Data Architecture. The credit union uses the TOGAF Standard; the CEO sponsors the program. A Business Architecture review with stakeholders found that fraud signals are scattered across the mobile, web, and branch channels, so fraud is caught late and investigation is costly. Stakeholders agree detection should improve but note the current channel systems are expensive to change. You are applying Phase C.",
+      "q": "You have been asked how to apply Phase C to address the motivation to reduce fraud losses and investigation cost. Which is the best answer?",
+      "o": {
+        "A": "You produce current-state application and data models, develop a target model that centralizes fraud data, create views of the change, and identify gaps to define roadmap components.",
+        "B": "You determine where the Application and Data Architecture create the fragmented-fraud-data problem, identify the changes needed, look for incremental changes that improve detection, identify the one-time work and impact to reduce investigation cost, then check with stakeholders whether the improvements are worth the one-time and ongoing cost.",
+        "C": "You identify where the Application Architecture (information system services and logical application components) fails to support timely fraud detection and drives cost up, determine the information-flow changes, and identify stakeholder priorities for the enhanced capability, value stream, and information flow.",
+        "D": "You design the messaging and integration technology needed to move fraud signals between the channel systems in real time, and specify the platform to host the consolidated fraud data."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 3,
+        "D": 1
+      },
+      "rat": {
+        "A": "Distractor (0). Jumping to current and target models with no linkage to the value-stream and information-flow deficiencies from the Business Architecture skips the analysis Phase C needs.",
+        "B": "Best (5). You find where the current Application and Data Architecture cause the deficiency, then assess the direct and sustainment cost of the change with stakeholders, since they accept a target on cost and outcome, not on a model; this feeds Phase E and F.",
+        "C": "Second (3). It identifies stakeholder priorities and changes to information flows, but does not explicitly assess the one-time and ongoing costs of the change with stakeholders. This leaves cost-of-change information needed by Phases E and F incomplete.",
+        "D": "Third (1). Messaging technology and hosting platform are Phase D concerns, not the Application and Data information needed to apply Phase C."
+      }
+    },
+    {
+      "n": 4,
+      "lo": "P2-U4.8",
+      "topic": "Phase D - Technology Architecture",
+      "stitle": "Scenario 4 - Credit union, resilient core banking platform",
+      "scenario": "You are the Technology Architect in the credit union's EA team. The credit union uses the TOGAF Standard; the CEO sponsors the program. The Business, Data, and Application Architectures for digital banking are agreed with stakeholders. The current core banking platform cannot meet the availability the target digital services require, and regulators expect demonstrable resilience. Stakeholders are concerned about the cost and risk of any platform change.",
+      "q": "You have been asked how you would identify the required changes in the Technology Architecture. Which is the best answer?",
+      "o": {
+        "A": "You determine where the current technology platform does not meet the target availability and resilience needs, identify the technology gaps and the work to close them, describe the options with cost, effort, and risk, and work with stakeholders on the trade-offs so they can decide.",
+        "B": "You build a baseline Technology Portfolio Catalog and a target platform decomposition diagram, run a technology gap analysis against the target services, and document candidate roadmap components for the gaps.",
+        "C": "You select a resilient cloud core-banking platform from a leading vendor, define the migration steps, and present the implementation schedule to stakeholders for approval.",
+        "D": "You catalog the current platform, flag the components that cannot meet availability, and pass the list to the infrastructure team to plan replacements while you begin Phase E."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 0,
+        "D": 1
+      },
+      "rat": {
+        "A": "Best (5). Phase D finds where the technology does not meet the target, identifies the gaps and work, and presents options with cost, effort, and risk so stakeholders make the trade-off decision that addresses their cost and risk concerns.",
+        "B": "Second (3). Baseline and target catalogs plus a gap analysis are valid Phase D techniques that surface candidate roadmap components, but this is model-focused and does not engage stakeholders on the trade-offs they raised.",
+        "C": "Distractor (0). Selecting a specific vendor platform and presenting a schedule jumps to a solution and acts as implementer instead of developing the Technology Architecture for a stakeholder decision.",
+        "D": "Third (1). Cataloging and flagging is partial Phase D work, but delegating the change decision to the infrastructure team skips the target, options, and stakeholder trade-offs."
+      }
+    },
+    {
+      "n": 5,
+      "lo": "P2-U5.4",
+      "topic": "Phase E - Opportunities & Solutions",
+      "stitle": "Scenario 5 - Credit union, work packages and roadmap",
+      "scenario": "You are an Enterprise Architect at the credit union, which uses the TOGAF Standard; the CEO sponsors the program. An Architecture Vision and domain architectures with identified gaps are approved for digital banking. Stakeholders insist that members must not experience service interruptions and that each release should deliver a visible member benefit. The Board wants risk controlled and value delivered progressively.",
+      "q": "You have been asked to recommend how to move from the approved gaps to a deliverable plan. Which is the best answer?",
+      "o": {
+        "A": "You identify dependencies among the changes and organize them into work packages that address the gaps, assess the value, effort, and risk of each change and work package against stakeholder priorities, define a series of Transition Architectures that each deliver measurable member benefit, and document the work packages and Transition Architectures in the Architecture Roadmap.",
+        "B": "You direct each domain architect to produce projects that close their domain's gaps, sum the work into the Implementation and Migration Plan, and record the timeline in the Architecture Roadmap.",
+        "C": "You ask stakeholders what must be done to implement the domain architectures, roll it into an IT portfolio plan, and produce a comprehensive Target Architecture with detailed technology choices for the next five years.",
+        "D": "You implement the domain architectures immediately, revise all in-flight projects to align, expose all functionality through service interfaces, and publish the result as the Implementation and Migration Plan."
+      },
+      "pts": {
+        "A": 5,
+        "B": 3,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Best (5). The Phase E approach: dependencies to work packages, value/effort/risk against stakeholder priorities, Transition Architectures delivering incremental member benefit, documented in the Architecture Roadmap, directly serving the no-interruption, progressive-value concern.",
+        "B": "Second (3). It addresses the deliverables but as an uncoordinated domain-by-domain roll-up, without Transition Architectures for incremental value, though it names the roadmap and plan correctly.",
+        "C": "Third (1). It considers stakeholder input but ends in fixed five-year technology choices, negating incremental value.",
+        "D": "Distractor (0). It jumps to a technical solution, ignores transition and value, and does not follow Phase E guidance."
+      }
+    },
+    {
+      "n": 6,
+      "lo": "P2-U5.7",
+      "topic": "Phase F - Migration Planning",
+      "stitle": "Scenario 6 - Credit union, business value per work package",
+      "scenario": "You are Lead Architect at the credit union, which uses the TOGAF ADM; the CEO sponsors the program. An outline Implementation and Migration Plan is approved and detailed planning is under way. The Board has limited funding and wants to fund the increments that deliver the most member value first. Operations, the branch network, and the finance office will fund, build, and run the result, and their commitment to the sequence is needed.",
+      "q": "You have been asked how business value should be handled in producing the detailed plan. Which is the best answer?",
+      "o": {
+        "A": "The EA team's domain architects assign a value rating to each work package from their own judgement, order the plan by that rating, and circulate it to the business groups for funding.",
+        "B": "Business Planning, Portfolio Management, Operations, and the finance office join the EA team to assign business value to each work package and Transition Architecture, weigh it against effort and risk with stakeholder priorities, and prioritize the migration so the highest-value increments are funded first, confirming the roadmap and finalizing the plan.",
+        "C": "You finalize the plan with the domain architects, attach an approximate cost to each project, submit it to the Architecture Board for approval, and let the Board decide funding order from cost alone.",
+        "D": "Project Managers estimate value per project using their own best practices, select the highest-value projects, and request funding from the Architecture Board."
+      },
+      "pts": {
+        "A": 3,
+        "B": 5,
+        "C": 1,
+        "D": 0
+      },
+      "rat": {
+        "A": "Second (3). Assigning value to work packages is right, but EA judgement alone is not the collaborative valuation Phase F expects with the funding and operating stakeholders.",
+        "B": "Best (5). Phase F assigns business value to each work package collaboratively with stakeholders inside and outside the organization, weighs value against effort and risk with their priorities, and prioritizes so the highest-value increments are funded first, then confirms the roadmap and finalizes the plan.",
+        "C": "Third (1). Board approval is part of it, but ordering funding on cost alone ignores business value and the collaborative valuation the situation needs.",
+        "D": "Distractor (0). This hands strategic value assessment and selection to Project Managers, whereas the EA should give projects detailed guidance so they focus on operational issues."
+      }
+    },
+    {
+      "n": 7,
+      "lo": "P2-U5.12",
+      "topic": "Phase G - Implementation Governance",
+      "stitle": "Scenario 7 - Credit union, non-standard analytics component",
+      "scenario": "You are Lead Architect at the credit union, which has a maturing EA capability using the TOGAF Standard; the CEO sponsors the program. After consulting key stakeholders, the CEO has decided to deploy a COTS member-analytics package quickly and within budget. The package requires an in-memory data component that is not on the current infrastructure standards list. The Architecture Board noted the non-standard component and the need to protect security and performance KPIs. The CEO has approved the roadmap projects and appointed a project manager.",
+      "q": "You have been asked to recommend a plan to implement the CEO's direction. Which is the best answer?",
+      "o": {
+        "A": "You prepare a risk assessment and impact analysis of the non-standard component, hand deliverables and dates to the implementation team, obtain CEO approval, test the solution just before deployment, and archive artifacts when done.",
+        "B": "You accept the direction, add the in-memory component as an additional organizational standard in the Standards Library (noting the training and skills needed), work with the implementation team to draw up an Architecture Contract, emphasize compliance reviews and security and performance testing during implementation, agree SLAs and dates with the business, and collect reusable artifacts afterward.",
+        "C": "You ask the vendor to modify the package to use a standard data component, build a prototype to explore options, obtain internal development leads' approval, then hand a schedule-focused plan to the project manager and review performance after go-live.",
+        "D": "You eliminate the non-standard component, create a plan and Architecture Contract to build a standards-compliant replacement in-house, tell the CEO it is cheaper long-term, take the budget impact to the finance committee, and chair frequent project meetings to monitor compliance."
+      },
+      "pts": {
+        "A": 1,
+        "B": 5,
+        "C": 3,
+        "D": 0
+      },
+      "rat": {
+        "A": "Third (1). It follows the direction but focuses on risk over co-existence, just hands over schedules, and tests too late, after the solution is built.",
+        "B": "Best (5). All within Phase G: accept the stakeholder-informed decision, add the new standard to the Standards Library, form an Architecture Contract with the implementation team, run compliance reviews and testing during implementation, agree SLAs with the business, and collect reusable artifacts afterward.",
+        "C": "Second (3). Vendor change and a prototype cost the time and budget the scenario forbids, the project plan is the PM's job, and testing performance only after go-live is too late.",
+        "D": "Distractor (0). It reverses a decision the CEO already made with stakeholders, makes unsubstantiated cost claims, and has the architect chairing PM meetings."
+      }
+    },
+    {
+      "n": 8,
+      "lo": "P2-U1.5",
+      "topic": "Architecture Compliance",
+      "stitle": "Scenario 8 - Credit union, compliance review of a delivery",
+      "scenario": "You are Lead Architect at the credit union, which uses the TOGAF Standard; the CEO sponsors the program. A delivery team building part of the digital banking platform has reached an implementation milestone. The Architecture Board wants confidence that the delivery conforms to the target architecture before it goes further, and one senior stakeholder has asked whether the architect can simply approve the design so the team can continue.",
+      "q": "You have been asked how the architecture compliance review should be conducted. Which is the best answer?",
+      "o": {
+        "A": "You approve the design yourself so the team can continue, since as Lead Architect you own conformance to the target architecture.",
+        "B": "You run an architecture compliance review at the milestone using the compliance checklists, assess where the implementation conforms to the target and where it deviates, recommend enforcement, a temporary dispensation, or a change to the target as appropriate, and present the findings so the stakeholders decide.",
+        "C": "You wait until the delivery is complete and then review the finished system against the target, raising any non-conformance as defects for the team to fix.",
+        "D": "You review the delivery against the ADM process steps to confirm the team followed the method, and report that as the compliance result."
+      },
+      "pts": {
+        "A": 0,
+        "B": 5,
+        "C": 1,
+        "D": 3
+      },
+      "rat": {
+        "A": "Distractor (0). The architect assesses the target architecture but stakeholders approve it; the architect self-approving conformance takes a decision that is not the architect's to make.",
+        "B": "Best (5). A compliance review at the milestone uses the checklists, assesses conformance and deviations, and recommends enforcement, dispensation, or a target change, with the architect advising and the stakeholders deciding.",
+        "C": "Third (1). Reviewing only at completion evaluates after the fact rather than at the milestone, which is too late to steer the delivery.",
+        "D": "Second (3). Checking ADM process compliance is appropriate during development, but at an implementation milestone the review should focus on architecture compliance to the target, so this addresses the wrong dimension."
+      }
+    }
+  ]
+}

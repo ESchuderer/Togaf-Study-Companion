@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+previews/
+public/all-banks.js
+public/THIRD-PARTY-NOTICES.txt
+public/practice.html
+public/drill.html
+public/weak-spots.html
+*.log
+.env*
+
+.wrangler/
+.dev.vars*

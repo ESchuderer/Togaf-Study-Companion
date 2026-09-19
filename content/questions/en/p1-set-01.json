@@ -1,0 +1,1048 @@
+{
+  "part": 1,
+  "title": "Part 1 Mock Exam - Set 1",
+  "passMark": 24,
+  "maxScore": 40,
+  "questions": [
+    {
+      "n": 1,
+      "lo": "P1-1.1",
+      "topic": "EA Concepts",
+      "q": "In the TOGAF Standard, the term 'enterprise' is best described as which of the following?",
+      "o": [
+        [
+          "A",
+          "A single legal company with shareholders"
+        ],
+        [
+          "B",
+          "Any collection of organizations with a common set of goals"
+        ],
+        [
+          "C",
+          "The IT department of a large corporation"
+        ],
+        [
+          "D",
+          "A government body only"
+        ]
+      ],
+      "a": "B",
+      "e": "An enterprise is any collection of organizations that has a common set of goals; it may be a whole corporation, a division, a government agency, or a group of geographically distant organizations linked by common ownership."
+    },
+    {
+      "n": 2,
+      "lo": "P1-1.2",
+      "topic": "EA Concepts",
+      "q": "What is the primary purpose of Enterprise Architecture according to the TOGAF Standard?",
+      "o": [
+        [
+          "A",
+          "To document the current IT estate"
+        ],
+        [
+          "B",
+          "To guide effective and efficient change in pursuit of the enterprise's goals"
+        ],
+        [
+          "C",
+          "To select technology vendors"
+        ],
+        [
+          "D",
+          "To replace project management"
+        ]
+      ],
+      "a": "B",
+      "e": "The purpose of EA is to guide effective, efficient, agile, and durable change in support of the organization's target outcomes."
+    },
+    {
+      "n": 3,
+      "lo": "P1-1.5",
+      "topic": "EA Concepts",
+      "q": "Which of the following lists the four architecture domains defined by the TOGAF Standard?",
+      "o": [
+        [
+          "A",
+          "Business, Data, Application, Technology"
+        ],
+        [
+          "B",
+          "Strategic, Segment, Capability, Solution"
+        ],
+        [
+          "C",
+          "Baseline, Transition, Target, Foundation"
+        ],
+        [
+          "D",
+          "People, Process, Technology, Governance"
+        ]
+      ],
+      "a": "A",
+      "e": "The four architecture domains are Business, Data, Application, and Technology (Data and Application together form the Information Systems Architectures)."
+    },
+    {
+      "n": 4,
+      "lo": "P1-1.7",
+      "topic": "Enterprise Continuum",
+      "q": "What is the primary use of the Enterprise Continuum?",
+      "o": [
+        [
+          "A",
+          "To schedule migration projects"
+        ],
+        [
+          "B",
+          "To classify and structure re-usable architecture and solution assets"
+        ],
+        [
+          "C",
+          "To assign business value to work packages"
+        ],
+        [
+          "D",
+          "To govern architecture compliance"
+        ]
+      ],
+      "a": "B",
+      "e": "The Enterprise Continuum is a view for classifying and structuring re-usable architecture and solution assets, ranging from generic Foundation Architectures to Organization-Specific Architectures."
+    },
+    {
+      "n": 5,
+      "lo": "P1-1.8",
+      "topic": "Architecture Repository",
+      "q": "Which statement best describes a well-run Architecture Repository?",
+      "o": [
+        [
+          "A",
+          "It captures every artifact listed in the TOGAF Standard"
+        ],
+        [
+          "B",
+          "It minimizes the information gathered and maintained to what is needed"
+        ],
+        [
+          "C",
+          "It is accessible only to the EA team"
+        ],
+        [
+          "D",
+          "It cannot be used by Agile organizations"
+        ]
+      ],
+      "a": "B",
+      "e": "A well-run repository minimizes information gathered and maintained; anything not needed for the current project or that adds minimal traceability should not be captured."
+    },
+    {
+      "n": 6,
+      "lo": "P1-1.12",
+      "topic": "Gap Analysis",
+      "q": "What does the Gap Analysis technique primarily highlight?",
+      "o": [
+        [
+          "A",
+          "Stakeholder concerns"
+        ],
+        [
+          "B",
+          "Risks in the implementation plan"
+        ],
+        [
+          "C",
+          "Shortfalls between the Baseline and Target Architectures"
+        ],
+        [
+          "D",
+          "The cost of each work package"
+        ]
+      ],
+      "a": "C",
+      "e": "Gap Analysis highlights shortfalls between the Baseline and Target Architectures: items deliberately omitted, accidentally left out, or not yet defined."
+    },
+    {
+      "n": 7,
+      "lo": "P1-3.1",
+      "topic": "ADM Phases",
+      "q": "How many phases does the ADM cycle contain, excluding the Preliminary Phase and Requirements Management?",
+      "o": [
+        [
+          "A",
+          "Six"
+        ],
+        [
+          "B",
+          "Seven"
+        ],
+        [
+          "C",
+          "Eight"
+        ],
+        [
+          "D",
+          "Ten"
+        ]
+      ],
+      "a": "C",
+      "e": "The ADM cycle has eight phases (A through H). The Preliminary Phase precedes the cycle and Requirements Management sits in the centre, continuously."
+    },
+    {
+      "n": 8,
+      "lo": "P1-3.2",
+      "topic": "Draft vs Approved",
+      "q": "According to the TOGAF Standard, what does it mean when a deliverable is designated 'approved'?",
+      "o": [
+        [
+          "A",
+          "It is finalized and cannot change"
+        ],
+        [
+          "B",
+          "It has been reviewed and approved, but is not necessarily finalized"
+        ],
+        [
+          "C",
+          "It is still under development"
+        ],
+        [
+          "D",
+          "It has been archived in the repository"
+        ]
+      ],
+      "a": "B",
+      "e": "Approved means reviewed and approved per governance practices; it does not mean finalized. Approved documents may evolve in later phases through change control."
+    },
+    {
+      "n": 9,
+      "lo": "P1-3.3",
+      "topic": "ADM Iteration",
+      "q": "Which statement about the ADM cycle is correct?",
+      "o": [
+        [
+          "A",
+          "It is a linear waterfall process that must be followed in strict sequence"
+        ],
+        [
+          "B",
+          "It is an iterative method and the graphic shows essential information flows, not a mandated sequence"
+        ],
+        [
+          "C",
+          "Phases may never be revisited once completed"
+        ],
+        [
+          "D",
+          "It mandates that all four domains be completed before Phase E"
+        ]
+      ],
+      "a": "B",
+      "e": "The ADM is iterative; the graphic is a stylized representation of essential information flows, not a mandated activity sequence or waterfall."
+    },
+    {
+      "n": 10,
+      "lo": "P1-3.7",
+      "topic": "Preliminary Phase",
+      "q": "Which of the following is an objective of the Preliminary Phase?",
+      "o": [
+        [
+          "A",
+          "To develop the Architecture Vision"
+        ],
+        [
+          "B",
+          "To establish the Architecture Capability including the governance process"
+        ],
+        [
+          "C",
+          "To finalize the Implementation and Migration Plan"
+        ],
+        [
+          "D",
+          "To obtain approval for the Statement of Architecture Work"
+        ]
+      ],
+      "a": "B",
+      "e": "The Preliminary Phase establishes the Architecture Capability, tailors the framework, defines principles, and establishes (not operates) the Architecture Governance process."
+    },
+    {
+      "n": 11,
+      "lo": "P1-3.9",
+      "topic": "Phase A",
+      "q": "Which deliverable is created and approved in Phase A and defines the scope and approach for the architecture cycle?",
+      "o": [
+        [
+          "A",
+          "Request for Architecture Work"
+        ],
+        [
+          "B",
+          "Statement of Architecture Work"
+        ],
+        [
+          "C",
+          "Architecture Contract"
+        ],
+        [
+          "D",
+          "Implementation and Migration Plan"
+        ]
+      ],
+      "a": "B",
+      "e": "The Statement of Architecture Work is developed and approved in Phase A; it defines the scope and approach and is the document against which execution is measured."
+    },
+    {
+      "n": 12,
+      "lo": "P1-3.10",
+      "topic": "Phase C",
+      "q": "Which two architecture domains are developed in Phase C?",
+      "o": [
+        [
+          "A",
+          "Business and Technology"
+        ],
+        [
+          "B",
+          "Data and Application"
+        ],
+        [
+          "C",
+          "Application and Technology"
+        ],
+        [
+          "D",
+          "Business and Data"
+        ]
+      ],
+      "a": "B",
+      "e": "Phase C covers the Information Systems Architectures: Data Architecture and Application Architecture."
+    },
+    {
+      "n": 13,
+      "lo": "P1-3.13",
+      "topic": "Phase E",
+      "q": "What is the primary purpose of Phase E, Opportunities and Solutions?",
+      "o": [
+        [
+          "A",
+          "To govern implementation projects"
+        ],
+        [
+          "B",
+          "To perform initial implementation planning and identify delivery vehicles"
+        ],
+        [
+          "C",
+          "To manage architecture change requests"
+        ],
+        [
+          "D",
+          "To develop the Technology Architecture"
+        ]
+      ],
+      "a": "B",
+      "e": "Phase E performs initial implementation planning, identifies delivery vehicles (programs, projects, portfolios), and determines Transition Architectures."
+    },
+    {
+      "n": 14,
+      "lo": "P1-3.14",
+      "topic": "Phase F",
+      "q": "What is finalized in Phase F, Migration Planning?",
+      "o": [
+        [
+          "A",
+          "The Architecture Vision"
+        ],
+        [
+          "B",
+          "The Statement of Architecture Work"
+        ],
+        [
+          "C",
+          "The detailed Implementation and Migration Plan"
+        ],
+        [
+          "D",
+          "The architecture principles"
+        ]
+      ],
+      "a": "C",
+      "e": "Phase F finalizes the detailed Implementation and Migration Plan and confirms the Architecture Roadmap; the ADD and Architecture Requirements Specification are also finalized here."
+    },
+    {
+      "n": 15,
+      "lo": "P1-3.15",
+      "topic": "Phase G",
+      "q": "In which ADM phase does the TOGAF Standard align with Agile development?",
+      "o": [
+        [
+          "A",
+          "Phase B"
+        ],
+        [
+          "B",
+          "Phase E"
+        ],
+        [
+          "C",
+          "Phase G"
+        ],
+        [
+          "D",
+          "Phase H"
+        ]
+      ],
+      "a": "C",
+      "e": "TOGAF aligns with Agile development in Phase G, Implementation Governance."
+    },
+    {
+      "n": 16,
+      "lo": "P1-3.16",
+      "topic": "Phase H",
+      "q": "Phase H, Architecture Change Management, is best described as which of the following?",
+      "o": [
+        [
+          "A",
+          "The phase that develops the Target Architecture"
+        ],
+        [
+          "B",
+          "A holding phase that keeps the ADM running and decides update vs. new cycle"
+        ],
+        [
+          "C",
+          "The phase that identifies stakeholders"
+        ],
+        [
+          "D",
+          "The phase that creates the Architecture Vision"
+        ]
+      ],
+      "a": "B",
+      "e": "Phase H is a holding phase that keeps the ADM running; a Change Request may trigger a light update or a full new ADM cycle."
+    },
+    {
+      "n": 17,
+      "lo": "P1-3.23",
+      "topic": "Requirements Management",
+      "q": "Where does Requirements Management sit in the ADM, and how often does it operate?",
+      "o": [
+        [
+          "A",
+          "Between Phase A and B, once per cycle"
+        ],
+        [
+          "B",
+          "At the centre of the ADM, continuously across all phases"
+        ],
+        [
+          "C",
+          "After Phase H, at the end of the cycle"
+        ],
+        [
+          "D",
+          "Only in the Preliminary Phase"
+        ]
+      ],
+      "a": "B",
+      "e": "Requirements Management sits at the centre of the ADM and operates continuously, managing requirements across all phases through governance."
+    },
+    {
+      "n": 18,
+      "lo": "P1-4.2",
+      "topic": "Architecture Principles",
+      "q": "Which of the following describes a purpose of Architecture Principles?",
+      "o": [
+        [
+          "A",
+          "To form a contract between the sponsor and the Enterprise Architect"
+        ],
+        [
+          "B",
+          "To set precedence during trade-off discussions and enable decision-making"
+        ],
+        [
+          "C",
+          "To describe the impacts of deploying the Target Architecture"
+        ],
+        [
+          "D",
+          "To schedule implementation projects"
+        ]
+      ],
+      "a": "B",
+      "e": "Principles enable decision-making by setting precedence during trade-off discussions, aligning the enterprise, supporting governance, and reflecting values and culture."
+    },
+    {
+      "n": 19,
+      "lo": "P1-4.3",
+      "topic": "Architecture Principles",
+      "q": "Which section of the TOGAF template for Architecture Principles states the requirements for Business and IT to carry out the principle?",
+      "o": [
+        [
+          "A",
+          "Name"
+        ],
+        [
+          "B",
+          "Statement"
+        ],
+        [
+          "C",
+          "Rationale"
+        ],
+        [
+          "D",
+          "Implications"
+        ]
+      ],
+      "a": "D",
+      "e": "The template is Name / Statement / Rationale / Implications. Implications highlight the requirements for Business and IT to carry out the principle."
+    },
+    {
+      "n": 20,
+      "lo": "P1-4.4",
+      "topic": "Architecture Principles",
+      "q": "A set of Architecture Principles that are enduring yet able to accommodate change meets which recommended criterion?",
+      "o": [
+        [
+          "A",
+          "Consistency"
+        ],
+        [
+          "B",
+          "Completeness"
+        ],
+        [
+          "C",
+          "Stability"
+        ],
+        [
+          "D",
+          "Robustness"
+        ]
+      ],
+      "a": "C",
+      "e": "Enduring yet able to accommodate change corresponds to the Stability criterion. The five criteria are Understandable, Robust, Complete, Consistent, and Stable."
+    },
+    {
+      "n": 21,
+      "lo": "P1-4.5",
+      "topic": "Business Scenarios",
+      "q": "What is a business scenario primarily used to do?",
+      "o": [
+        [
+          "A",
+          "Select a technology vendor"
+        ],
+        [
+          "B",
+          "Identify and understand business needs and derive requirements"
+        ],
+        [
+          "C",
+          "Assign business value to work packages"
+        ],
+        [
+          "D",
+          "Govern implementation compliance"
+        ]
+      ],
+      "a": "B",
+      "e": "Business scenarios help identify and understand business needs and derive the architecture requirements the architecture must address, primarily in Phases A and B."
+    },
+    {
+      "n": 22,
+      "lo": "P1-4.8",
+      "topic": "BTRA",
+      "q": "What does the Business Transformation Readiness Assessment technique evaluate?",
+      "o": [
+        [
+          "A",
+          "The technical feasibility of a solution"
+        ],
+        [
+          "B",
+          "The organization's readiness to undergo change"
+        ],
+        [
+          "C",
+          "The cost of migration projects"
+        ],
+        [
+          "D",
+          "Compliance with architecture standards"
+        ]
+      ],
+      "a": "B",
+      "e": "The BTRA evaluates and quantifies an organization's readiness to undergo change, applied in Phase A with mitigations feeding the Implementation and Migration Plan."
+    },
+    {
+      "n": 23,
+      "lo": "P1-4.9",
+      "topic": "Risk Management",
+      "q": "What are the two levels of risk considered in TOGAF risk management?",
+      "o": [
+        [
+          "A",
+          "High and Low"
+        ],
+        [
+          "B",
+          "Initial and Residual"
+        ],
+        [
+          "C",
+          "Marginal and Critical"
+        ],
+        [
+          "D",
+          "Strategic and Operational"
+        ]
+      ],
+      "a": "B",
+      "e": "Initial Level of Risk is categorization before mitigation; Residual Level of Risk is categorization after mitigating actions are applied."
+    },
+    {
+      "n": 24,
+      "lo": "P1-5.2",
+      "topic": "Applying the ADM",
+      "q": "Why is iteration important when applying the ADM?",
+      "o": [
+        [
+          "A",
+          "It captures stakeholder requirements"
+        ],
+        [
+          "B",
+          "It supports projects operating multiple ADM phases concurrently"
+        ],
+        [
+          "C",
+          "It selects alternative Target Architectures"
+        ],
+        [
+          "D",
+          "It identifies business scenarios"
+        ]
+      ],
+      "a": "B",
+      "e": "Iteration within an ADM cycle supports projects that operate multiple ADM phases concurrently."
+    },
+    {
+      "n": 25,
+      "lo": "P1-5.3",
+      "topic": "Architecture Landscape",
+      "q": "What are the three levels of the Architecture Landscape?",
+      "o": [
+        [
+          "A",
+          "Baseline, Transition, Target"
+        ],
+        [
+          "B",
+          "Business, Data, Application"
+        ],
+        [
+          "C",
+          "Strategic, Segment, Capability"
+        ],
+        [
+          "D",
+          "Foundation, Common, Solution"
+        ]
+      ],
+      "a": "C",
+      "e": "The Architecture Landscape has three levels: Strategic, Segment, and Capability Architectures. Baseline/Transition/Target are states, not levels."
+    },
+    {
+      "n": 26,
+      "lo": "P1-5.4",
+      "topic": "Partitioning",
+      "q": "Which statement about architecture partitioning is correct?",
+      "o": [
+        [
+          "A",
+          "TOGAF mandates a single partitioning model"
+        ],
+        [
+          "B",
+          "Each enterprise adopts a partitioning model that reflects its own operating model"
+        ],
+        [
+          "C",
+          "Partitioning is required only for Agile enterprises"
+        ],
+        [
+          "D",
+          "Partitioning must mirror the organizational chart"
+        ]
+      ],
+      "a": "B",
+      "e": "It is impractical to define one partitioning model; each enterprise adopts a model reflecting its own operating model."
+    },
+    {
+      "n": 27,
+      "lo": "P1-5.5",
+      "topic": "Scoping Architecture",
+      "q": "Which scope dimension considers the appropriate level of detail to capture based on the intended use of the architecture?",
+      "o": [
+        [
+          "A",
+          "Breadth"
+        ],
+        [
+          "B",
+          "Depth"
+        ],
+        [
+          "C",
+          "Time Period"
+        ],
+        [
+          "D",
+          "Architecture Domain"
+        ]
+      ],
+      "a": "B",
+      "e": "The four dimensions are Breadth, Depth, Time Period, and Architecture Domain. Depth addresses the appropriate level of detail for the intended use."
+    },
+    {
+      "n": 28,
+      "lo": "P1-6.1",
+      "topic": "Architecture Governance",
+      "q": "How does Architecture Governance typically operate?",
+      "o": [
+        [
+          "A",
+          "In isolation from other governance"
+        ],
+        [
+          "B",
+          "At the top level of the organization only"
+        ],
+        [
+          "C",
+          "Within a hierarchy of governance structures"
+        ],
+        [
+          "D",
+          "Solely within Phase G of the ADM"
+        ]
+      ],
+      "a": "C",
+      "e": "Architecture Governance operates within a hierarchy that can include Corporate, Technology, IT, and Architecture Governance."
+    },
+    {
+      "n": 29,
+      "lo": "P1-6.3",
+      "topic": "Architecture Board",
+      "q": "Which of the following is a responsibility of the Architecture Board?",
+      "o": [
+        [
+          "A",
+          "Allocating budget for all IT projects"
+        ],
+        [
+          "B",
+          "Enforcement of architecture compliance"
+        ],
+        [
+          "C",
+          "Writing the code for implementation projects"
+        ],
+        [
+          "D",
+          "Approving the corporate business strategy"
+        ]
+      ],
+      "a": "B",
+      "e": "Enforcement of architecture compliance is a core Architecture Board responsibility, along with providing the basis for decisions and consistency of the architecture."
+    },
+    {
+      "n": 30,
+      "lo": "P1-6.4",
+      "topic": "Architecture Contracts",
+      "q": "Complete the sentence: Architecture Contracts should …",
+      "o": [
+        [
+          "A",
+          "permit deviations from principles and standards"
+        ],
+        [
+          "B",
+          "include agreements with all parties involved in delivery of the architecture"
+        ],
+        [
+          "C",
+          "only involve the sponsor and the architecture function"
+        ],
+        [
+          "D",
+          "be created in the Preliminary Phase"
+        ]
+      ],
+      "a": "B",
+      "e": "Because more delivery is done by integrators and providers, Architecture Contracts should establish joint agreements between all parties involved in development and delivery."
+    },
+    {
+      "n": 31,
+      "lo": "P1-6.5",
+      "topic": "Architecture Compliance",
+      "q": "Which pair of roles does the architect perform during an Architecture Compliance Review?",
+      "o": [
+        [
+          "A",
+          "Auditor and advisor"
+        ],
+        [
+          "B",
+          "Sponsor and approver"
+        ],
+        [
+          "C",
+          "Developer and tester"
+        ],
+        [
+          "D",
+          "Project manager and scheduler"
+        ]
+      ],
+      "a": "A",
+      "e": "During a compliance review the architect acts as auditor (assessing compliance) and advisor (recommending actions). Recommendations are to enforce compliance, grant a dispensation, or change the target architecture."
+    },
+    {
+      "n": 32,
+      "lo": "P1-7.1",
+      "topic": "Views and Viewpoints",
+      "q": "What is the relationship between an architecture view and an architecture viewpoint?",
+      "o": [
+        [
+          "A",
+          "A view is generic and reusable; a viewpoint is specific"
+        ],
+        [
+          "B",
+          "A viewpoint governs the construction of a view; the view is specific to the architecture"
+        ],
+        [
+          "C",
+          "They are synonyms in the TOGAF Standard"
+        ],
+        [
+          "D",
+          "A viewpoint is always a diagram; a view is always a matrix"
+        ]
+      ],
+      "a": "B",
+      "e": "A viewpoint is the generic, reusable lens defining conventions; a view is the specific representation built from a viewpoint for a set of concerns."
+    },
+    {
+      "n": 33,
+      "lo": "P1-7.1",
+      "topic": "Stakeholders and Concerns",
+      "q": "In the TOGAF Standard, what is the relationship between concerns and requirements?",
+      "o": [
+        [
+          "A",
+          "Concerns replace requirements"
+        ],
+        [
+          "B",
+          "Concerns lead to requirements"
+        ],
+        [
+          "C",
+          "Requirements are unrelated to concerns"
+        ],
+        [
+          "D",
+          "Requirements always precede concerns"
+        ]
+      ],
+      "a": "B",
+      "e": "Concerns are interests in a system relevant to stakeholders; identifying concerns ensures stakeholder interests become requirements."
+    },
+    {
+      "n": 34,
+      "lo": "P1-7.2",
+      "topic": "Building Blocks",
+      "q": "Which statement correctly distinguishes an Architecture Building Block (ABB) from a Solution Building Block (SBB)?",
+      "o": [
+        [
+          "A",
+          "An ABB is implementation-specific; an SBB is logical"
+        ],
+        [
+          "B",
+          "An ABB is logical and supplier-independent; an SBB is physical and implementation-specific"
+        ],
+        [
+          "C",
+          "Both are physical components"
+        ],
+        [
+          "D",
+          "An SBB shapes the ABB"
+        ]
+      ],
+      "a": "B",
+      "e": "An ABB is a logical, supplier-independent capability description that shapes the SBB; an SBB is the physical, implementation-specific component that delivers the solution."
+    },
+    {
+      "n": 35,
+      "lo": "P1-7.3",
+      "topic": "Deliverables",
+      "q": "What is the primary purpose of the Architecture Definition Document (ADD)?",
+      "o": [
+        [
+          "A",
+          "To provide a high-level aspirational view of the end product"
+        ],
+        [
+          "B",
+          "To act as a deliverable container for the core architectural artifacts"
+        ],
+        [
+          "C",
+          "To trigger the start of an architecture development cycle"
+        ],
+        [
+          "D",
+          "To communicate information to stakeholders at the right time"
+        ]
+      ],
+      "a": "B",
+      "e": "The ADD is the deliverable container for core architectural artifacts. The aspirational view is the Architecture Vision; the trigger is the Request for Architecture Work; the communication is the Communications Plan."
+    },
+    {
+      "n": 36,
+      "lo": "P1-7.3",
+      "topic": "Deliverables",
+      "q": "Which deliverable is sent from the sponsoring organization to trigger the start of an architecture development cycle?",
+      "o": [
+        [
+          "A",
+          "Statement of Architecture Work"
+        ],
+        [
+          "B",
+          "Architecture Vision"
+        ],
+        [
+          "C",
+          "Request for Architecture Work"
+        ],
+        [
+          "D",
+          "Change Request"
+        ]
+      ],
+      "a": "C",
+      "e": "The Request for Architecture Work is sent from the sponsoring organization to the architecture organization to trigger a cycle; it is a primary output of the Preliminary Phase."
+    },
+    {
+      "n": 37,
+      "lo": "P1-7.3",
+      "topic": "Deliverables",
+      "q": "What is the purpose of the Architecture Roadmap?",
+      "o": [
+        [
+          "A",
+          "To show progression of change from the Baseline to the Target Architecture"
+        ],
+        [
+          "B",
+          "To act as the deliverable container for artifacts"
+        ],
+        [
+          "C",
+          "To assess the organization's readiness for change"
+        ],
+        [
+          "D",
+          "To define the scope and approach of the cycle"
+        ]
+      ],
+      "a": "A",
+      "e": "The Architecture Roadmap lists work packages on a timeline to show progression from the Baseline to the Target Architecture. It is first produced in Phase E."
+    },
+    {
+      "n": 38,
+      "lo": "P1-7.3",
+      "topic": "Deliverables",
+      "q": "Which one of the following best describes the purpose of a Change Request?",
+      "o": [
+        [
+          "A",
+          "To communicate architecture information to stakeholders"
+        ],
+        [
+          "B",
+          "To distribute compliance results to the Architecture Board"
+        ],
+        [
+          "C",
+          "To request a dispensation or kick-start a further cycle of architecture work"
+        ],
+        [
+          "D",
+          "To review project progress against objectives"
+        ]
+      ],
+      "a": "C",
+      "e": "A Change Request requests a dispensation or kick-starts a further cycle of architecture work; it is the key input to Phase H."
+    },
+    {
+      "n": 39,
+      "lo": "P1-1.9",
+      "topic": "Content Framework",
+      "q": "How is the TOGAF Content Framework structured?",
+      "o": [
+        [
+          "A",
+          "By the Enterprise Continuum levels"
+        ],
+        [
+          "B",
+          "In line with the phases of the ADM"
+        ],
+        [
+          "C",
+          "By stakeholder concern"
+        ],
+        [
+          "D",
+          "By technology vendor"
+        ]
+      ],
+      "a": "B",
+      "e": "The Content Framework is structured in line with the phases of the ADM, providing a model for the artifacts and deliverables created in each phase."
+    },
+    {
+      "n": 40,
+      "lo": "P1-1.10",
+      "topic": "Architecture Capability",
+      "q": "Which of the following best describes an Architecture Capability?",
+      "o": [
+        [
+          "A",
+          "The technology stack used to store artifacts"
+        ],
+        [
+          "B",
+          "The organization structures, roles, responsibilities, skills, and processes to do EA"
+        ],
+        [
+          "C",
+          "A catalog of building blocks"
+        ],
+        [
+          "D",
+          "The metamodel of architecture content"
+        ]
+      ],
+      "a": "B",
+      "e": "An Architecture Capability is the ability to perform EA, put in place through organization structures, roles, responsibilities, skills, and processes; it is established in the Preliminary Phase."
+    }
+  ]
+}
