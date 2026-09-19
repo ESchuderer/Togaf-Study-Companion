@@ -1,3 +1,4 @@
+import {KEY as datasetKey} from './datasets';
 import React, {useState, useEffect, useRef} from 'react';
 import {BookOpen, LayoutDashboard, ChartNoAxesCombined, ArrowUpRight, ArrowRight, Target, CheckCheck, Layers, HardDrive, Sun, Moon} from 'lucide-react';
 import {Button} from './components/ui/button';
@@ -5,8 +6,8 @@ import {Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter} f
 import {Badge} from './components/ui/badge';
 import {Progress} from './components/ui/progress';
 import {AlertDialog, AlertDialogContent, AlertDialogHeader, AlertDialogTitle, AlertDialogDescription, AlertDialogFooter, AlertDialogAction, AlertDialogCancel} from './components/ui/alert-dialog';
-import {PageHeading, LinkButton, Metric, Notice} from './components/shared';
-import {stats, banks, t, href, percent} from './model';
+import {PageHeading, LinkButton, Metric, Notice, Check as Checkbox} from './components/shared';
+import {stats, banks, t, href, percent, datasetError, reloadDatasets, selectBanks, selectRuns} from './model';
 import {Practice} from './screens/practice';
 import {ProgressPage} from './screens/progress';
 
@@ -16,7 +17,7 @@ const links = [
   ['my-data','my-data/','My data & backups',ChartNoAxesCombined]
 ];
 
-function Home({runs}) {
+function Home({runs,banks}) {
   const latest=[...stats.latest(1,runs),...stats.latest(2,runs)];
   const earned=latest.reduce((n,q)=>n+q.earned,0), max=latest.reduce((n,q)=>n+q.max,0);
   const weak=[1,2].flatMap(part=>stats.topics(part,runs).filter(q=>q.pct<.7).map(q=>({...q,part}))).sort((a,b)=>a.pct-b.pct).slice(0,3);
@@ -35,13 +36,17 @@ function Home({runs}) {
 }
 
 function App() {
+  const filterKey=datasetKey+'.custom-only';
+  const [customOnly,setCustomOnly]=useState(()=>{try{return localStorage.getItem(filterKey)==='1';}catch{return false;}});
+  const [filterError,setFilterError]=useState('');
+  const toggleCustom=enabled=>{setCustomOnly(enabled);try{localStorage.setItem(filterKey,enabled?'1':'0');setFilterError('');}catch{setFilterError('This filter could not be saved. It applies until you leave this page.');}};
   const [theme,setTheme]=useState(()=>document.documentElement.dataset.theme);
   useEffect(()=>{const update=()=>setTheme(document.documentElement.dataset.theme);window.addEventListener('themechange',update);return()=>window.removeEventListener('themechange',update);},[]);
   const [record,setRecord]=useState(()=>{const runs=stats.load();return {runs,error:stats.error};});
   const [dirty,setDirty]=useState(false),[confirmation,setConfirmation]=useState(null);
   const leaving=useRef(false);
-  const refresh=()=>{const runs=stats.load();setRecord({runs,error:stats.error});};
-  useEffect(()=>{const listener=e=>{if(e.key===stats.KEY||e.key===null) refresh();};window.addEventListener('storage',listener);return()=>window.removeEventListener('storage',listener);},[]);
+  const refresh=()=>{reloadDatasets();const runs=stats.load();setRecord({runs,error:stats.error});};
+  useEffect(()=>{const listener=e=>{if(e.key===stats.KEY||e.key===datasetKey||e.key===null) refresh();};window.addEventListener('storage',listener);return()=>{window.removeEventListener('storage',listener);};},[]);
   useEffect(()=>{const listener=e=>{if(dirty&&!leaving.current){e.preventDefault();e.returnValue='';}};window.addEventListener('beforeunload',listener);return()=>window.removeEventListener('beforeunload',listener);},[dirty]);
   const confirm=(title,description,action)=>setConfirmation({title,description,action});
   const leave=action=>dirty?confirm('Leave this session?','Unfinished answers and unsaved results will be lost. Saved progress is kept.',()=>{leaving.current=true;action();}):action();
@@ -53,9 +58,9 @@ function App() {
   }}>
     <a className="skip-link" href="#main">{t('Skip to content')}</a>
     <aside className="sidebar no-print"><a className="brand" href={href('./')}><span className="brand-mark"><BookOpen size={20}/></span><span>TOGAF<small>{t('Practice workspace')}</small></span></a><p className="nav-label">{t('WORKSPACE')}</p><nav className="topnav" aria-label={t('Main navigation')}>{links.map(([key,to,label,Icon])=><a key={key} href={href(to)} aria-current={page===key?'page':undefined}><Icon size={18}/><span>{t(label)}</span></a>)}</nav></aside>
-    <div className="workspace"><header className="workspace-header no-print"><span>{t(links.find(([key])=>key===page)[2])}</span><div className="header-actions"><Button id="theme-toggle" variant="outline" size="icon" onClick={()=>window.toggleTheme()} aria-label={t(theme==='dark'?'Switch to light mode':'Switch to dark mode')} title={t(theme==='dark'?'Switch to light mode':'Switch to dark mode')}>{theme==='dark'?<Sun/>:<Moon/>}</Button></div></header>
-    <main id="main" tabIndex={-1}>{record.error&&<Notice error>{record.error} <a href={href('my-data/#backup')}>{t('Manage backups')}</a></Notice>}
-      {page==='home'&&<Home runs={record.runs}/>}{page==='practice'&&<Practice runs={record.runs} refresh={refresh} setDirty={setDirty} confirm={confirm}/>}{page==='my-data'&&<ProgressPage runs={record.runs} refresh={refresh} confirm={confirm}/>}
+    <div className="workspace"><header className="workspace-header no-print"><span>{t(links.find(([key])=>key===page)[2])}</span><div className="header-actions">{page!=='my-data'&&<Checkbox id="custom-only" role="switch" checked={customOnly} disabled={dirty} onChange={e=>toggleCustom(e.target.checked)}>Custom sets only</Checkbox>}<Button id="theme-toggle" variant="outline" size="icon" onClick={()=>window.toggleTheme()} aria-label={t(theme==='dark'?'Switch to light mode':'Switch to dark mode')} title={t(theme==='dark'?'Switch to light mode':'Switch to dark mode')}>{theme==='dark'?<Sun/>:<Moon/>}</Button></div></header>
+    <main id="main" tabIndex={-1}>{filterError&&<Notice error>{filterError}</Notice>}{page!=='my-data'&&customOnly&&!selectBanks(true).length&&<Notice>No custom question sets yet. <a href={href('my-data/#datasets')}>Import question sets</a> or turn off Custom sets only.</Notice>}{datasetError&&<Notice error>{datasetError}</Notice>}{record.error&&<Notice error>{record.error} <a href={href('my-data/#backup')}>{t('Manage backups')}</a></Notice>}
+      {page==='home'&&<Home runs={selectRuns(record.runs,customOnly)} banks={selectBanks(customOnly)}/>}{page==='practice'&&<Practice key={String(customOnly)} customOnly={customOnly} runs={selectRuns(record.runs,customOnly)} refresh={refresh} setDirty={setDirty} confirm={confirm}/>}{page==='my-data'&&<ProgressPage runs={record.runs} refresh={refresh} confirm={confirm}/>}
     </main></div>
     <AlertDialog open={!!confirmation} onOpenChange={open=>{if(!open)setConfirmation(null);}}><AlertDialogContent><AlertDialogHeader><AlertDialogTitle>{confirmation&&t(confirmation.title)}</AlertDialogTitle><AlertDialogDescription>{confirmation&&t(confirmation.description)}</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>{t('Cancel')}</AlertDialogCancel><AlertDialogAction onClick={()=>{const action=confirmation?.action;setConfirmation(null);action?.();}}>{t('Continue')}</AlertDialogAction></AlertDialogFooter></AlertDialogContent></AlertDialog>
   </div>;

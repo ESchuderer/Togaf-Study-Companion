@@ -19,12 +19,6 @@
  * `lo` is the syllabus learning-outcome tag (e.g. "P1-4.3" or "P2-U5.4"); it drives the learning-target report.
  */
 (function () {
-  if (window.TOGAF_HOSTED && (!window.TOGAF_CLOUD?.user?.id || !window.TogafCloud || !window.TogafRecords)) {
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.textContent = "Account services could not load. Check your connection, then reload or sign in again at /login.";
-    });
-    throw new Error("Account bootstrap unavailable; local fallback disabled.");
-  }
   const $ = id => document.getElementById(id);
   const t = ((text, values = {}) => text.replace(/\{(\w+)\}/g, (match, key) => Object.hasOwn(values, key) ? values[key] : match));
   const qt = text => window.TOGAF_GENERATED ? TogafStats.escape(t(text)) : text;
@@ -47,7 +41,7 @@
    * can aggregate across mocks, official tests and drills. Question id = src#n. */
   const TogafStats = {
     t,
-    KEY: window.TOGAF_GENERATED ? "togaf.generated.runs.v1" : window.TOGAF_CLOUD ? "togaf.runs.github." + window.TOGAF_CLOUD.user.id : "togaf.runs",
+    KEY: "togaf.generated.runs.v1",
     error: "",
     escape(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]); },
     valid(run) {
@@ -83,9 +77,7 @@
       if (this.error) throw new Error(this.error);
       const merged = this.mergeRuns(runs, incoming);
       const additions = merged.slice(runs.length);
-      if (window.TogafCloud) window.TogafCloud.beforeSave(additions);
       localStorage.setItem(this.KEY, JSON.stringify(merged));
-      if (window.TogafCloud && additions.length) window.TogafCloud.changed();
       return additions.length;
     },
     importJSON(text) {
@@ -118,7 +110,6 @@
     }
   };
   window.TogafStats = TogafStats;
-  if (window.TogafCloud) window.TogafCloud.attach(TogafStats);
 
   const TogafExam = {
     shuffle,
@@ -254,7 +245,6 @@
       if (revealed && q.reviewNote) html += '<div class="target-callout"><strong>Review note:</strong> ' + TogafStats.escape(q.reviewNote) + '</div>';
       html += '</div>';
       $("question-container").innerHTML = html;
-      if (window.TogafCloud) $("question-container").append(window.TogafCloud.feedback(TogafStats.qid(q, this.exam.title), this.part));
 
       $("question-container").querySelectorAll("button.opt").forEach(btn => {
         btn.addEventListener("click", () => {

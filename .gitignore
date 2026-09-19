@@ -10,5 +10,3 @@ public/weak-spots.html
 *.log
 .env*
 
-.wrangler/
-.dev.vars*

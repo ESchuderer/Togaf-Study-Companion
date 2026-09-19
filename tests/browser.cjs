@@ -10,6 +10,12 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await call('Emulation.setEmulatedMedia',{features:[{name:'prefers-color-scheme',value:'dark'}]});
   await open('?lang=en');
+  await click('#custom-only');
+  await wait('document.body.textContent.includes("No custom question sets yet")');
+  await open('practice/');
+  assert.equal(await evaluate('document.querySelector("#build-btn").disabled'),true,'empty custom pool must not fall back to generated questions');
+  await click('#custom-only');
+  await open('');
   await evaluate("localStorage.setItem('togaf.generated.language','zz')");
   await open('');
   assert.equal(await evaluate('document.documentElement.lang'),'en','unsupported saved language does not change English UI');
@@ -124,9 +130,29 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   for(const url of await evaluate('[...document.links].filter(a=>a.origin===location.origin).map(a=>a.href)')) assert.equal((await fetch(url)).status,200,url);
   await open('my-data/?lang=en');
   assert.equal(await evaluate('!!document.querySelector("#github-signin, #github-backup")'),false);
+  const custom={version:1,banks:[{id:'browser-check',title:'Custom browser check',part:1,questions:[{n:1,topic:'Custom topic',q:'Select the fifth choice <b>as plain text</b>.',o:['A','B','C','D','E'].map(k=>[k,k]),a:'E',e:'The fifth choice is correct.',images:['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j2ioAAAAASUVORK5CYII=']}]}]};
+  const importSet=async()=>evaluate(`(()=>{const transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(custom))}],'custom.json',{type:'application/json'}));const input=document.getElementById('dataset-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
+  await importSet();await wait('document.body.textContent.includes("1 new question sets imported")');
+  await importSet();await wait('document.body.textContent.includes("0 new question sets imported")');
+  await open('practice/?part=1&dataset=custom-browser-check&count=0&auto=1');await click('#start-btn');
+  await wait('!!document.querySelector("[data-question-id]")');
+  assert.equal(await evaluate('document.querySelectorAll(".answer-option").length'),5);
+  assert.equal(await evaluate('document.querySelector(".question-text b")'),null,'imported HTML stays text');
+  await wait('document.querySelector(".question-card img").complete');
+  assert.ok(await evaluate('document.querySelector(".question-card img").naturalWidth>0'));
+  await click('button[data-key="E"]');await click('#submit-btn');await wait('!!document.getElementById("result")');
+  assert.equal(await evaluate('TogafStats.load().at(-1).score'),1);
+  assert.equal(await evaluate('TogafStats.load().at(-1).items[0].id'),'custom-browser-check#1');
+  await open('my-data/');assert.equal(await evaluate('TogafStats.load().at(-1).score'),1);
+  assert.equal(await evaluate('TogafStats.importRuns([TogafStats.load().at(-1)])'),0);
+  await click('#dataset-export');
+  await require('./custom-filter.cjs')({evaluate,open,click,wait});
   await evaluate('localStorage.setItem(TogafStats.KEY,"{broken")');await open('my-data/?lang=en');
   assert.ok(await evaluate('document.body.textContent.includes("Results unavailable:")'));
   assert.equal(await evaluate('localStorage.getItem(TogafStats.KEY)'),'{broken');
   assert.equal(errors.length,0,JSON.stringify(errors));
   console.log('PASS: React/shadcn routes, existing v1 progress, scoring, blanks, retry/deduplication, dialogs, navigation guard, JSON backup/restore, malformed storage, mobile layouts and themes.');
 };
+
+
+

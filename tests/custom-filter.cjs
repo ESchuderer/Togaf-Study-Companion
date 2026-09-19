@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict');
+module.exports=async({evaluate,open,click,wait})=>{
+  await open('');
+  await click('#custom-only');
+  await wait('document.querySelector("#custom-only").checked');
+  const count=await evaluate('TOGAF_BANKS.filter(b=>b.src.startsWith("custom-")).reduce((n,b)=>n+b.questions.length,0)');
+  assert.equal(Number(await evaluate('document.querySelector(".metric strong").textContent')),count,'overview excludes generated questions');
+  await open('practice/?part=1');
+  assert.equal(await evaluate('document.querySelector("#custom-only").checked'),true,'filter survives navigation');
+  assert.ok(await evaluate('[...document.querySelector("#dataset").options].every(o=>!o.value||o.value.startsWith("custom-"))'),'set dropdown excludes generated banks');
+  await open('practice/?part=1&count=0&auto=1&dataset=p1-set-01');
+  await click('#start-btn');
+  await wait('!!document.querySelector("[data-question-id]")');
+  assert.ok(await evaluate('document.querySelector("[data-question-id]").dataset.questionId.startsWith("custom-")'),'quick start cannot select generated questions even with an old dataset link');
+  await wait('document.querySelector("#custom-only").disabled');
+  await click('#submit-btn');
+  await wait('!!document.querySelector("[role=alertdialog]")');
+  await click('[data-slot="alert-dialog-action"]');
+  await wait('!!document.querySelector("#result")');
+  await open('');
+  await click('#custom-only');
+  await wait('!document.querySelector("#custom-only").checked');
+  assert.ok(Number(await evaluate('document.querySelector(".metric strong").textContent'))>count,'turning filter off restores generated counts');
+};

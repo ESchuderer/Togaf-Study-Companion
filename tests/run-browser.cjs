@@ -4,7 +4,8 @@ const fs=require('node:fs'),path=require('node:path'),http=require('node:http'),
 const root=path.resolve(__dirname,'..'),webroot=path.join(root,'dist');
 const base=(process.env.ASTRO_BASE||'/').replace(/\/$/,'');
 const profile=fs.mkdtempSync(path.join(require('node:os').tmpdir(),'togaf-pages-check-'));
-const server=http.createServer((req,res)=>{
+const server=http.createServer(async(req,res)=>{
+
   let pathname=new URL(req.url,'http://localhost').pathname;
   if(base){if(!pathname.startsWith(base+'/')){res.writeHead(404).end();return;}pathname=pathname.slice(base.length);}
   if(pathname.endsWith('/'))pathname+='index.html';

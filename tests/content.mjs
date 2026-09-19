@@ -63,7 +63,8 @@ for(const bank of banks) {
 console.log('PASS: Pages allowlist, 528 English questions, answer keys, isolated storage, atomic imports and storage failures.');
 const source = fs.readFileSync(path.resolve(import.meta.dirname,'../src/model.js'),'utf8');
 const helpers = vm.createContext({window:{TOGAF_BASE:'/generated/'},location:{href:'https://example.test/generated/practice/?lang=zz'},URL});
-vm.runInContext(source.replaceAll('export ', '') + '\nwindow.check={t,href};',helpers);
+helpers.datasets={read:()=>[],asBanks:()=>[]};helpers.window.TOGAF_BANKS=[];
+vm.runInContext(source.replace(/^import .*;$/gm,'').replaceAll('export ', '') + '\nwindow.check={t,href};',helpers);
 assert.equal(helpers.window.check.href('my-data/'),'https://example.test/generated/my-data/');
 assert.equal(helpers.window.check.t('Part {part}',{part:2}),'Part 2');
 assert.equal(helpers.window.check.t('__proto__'),'__proto__');
