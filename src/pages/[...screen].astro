@@ -3,7 +3,7 @@ import App from '../app.jsx';
 import '../styles.css';
 
 export function getStaticPaths() {
-  return [undefined,'practice','my-data'].map(screen=>({params:{screen}}));
+  return [undefined,'practice','statistics','my-data'].map(screen=>({params:{screen}}));
 }
 const base=import.meta.env.BASE_URL.replace(/\/?$/,'/');
 const page=Astro.params.screen || 'home';
@@ -37,6 +37,11 @@ const page=Astro.params.screen || 'home';
       })();
     </script>
     <script is:inline define:vars={{base,page}}>window.TOGAF_GENERATED=true;window.TOGAF_REACT=true;window.TOGAF_BASE=base;window.TOGAF_PAGE=page;</script>
+    {import.meta.env.TOGAF_DEPLOYMENT==='cloud'&&<>
+      <script is:inline>window.TOGAF_HOSTED=true;</script>
+      <script is:inline src="/api/bootstrap.js"></script>
+      <script is:inline src="/private-banks.js"></script>
+    </>}
     <script is:inline src={`${base}records.js`}></script>
     <script is:inline src={`${base}all-banks.js`}></script>
     <script is:inline src={`${base}exam-engine.js`}></script>

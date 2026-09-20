@@ -10,3 +10,10 @@ public/weak-spots.html
 *.log
 .env*
 
+
+private/
+
+dist-cloud/
+.wrangler/
+.dev.vars*
+public/records.js

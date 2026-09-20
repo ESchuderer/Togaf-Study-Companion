@@ -38,13 +38,14 @@
   }
 
   /* Result persistence (localStorage). Every graded run is appended so weak-spots.html
-   * can aggregate across mocks, official tests and drills. Question id = src#n. */
+   * can aggregate across practice sessions and drills. Question id = src#n. */
   const TogafStats = {
     t,
-    KEY: "togaf.generated.runs.v1",
+    KEY: window.TOGAF_CLOUD ? "togaf.runs.github."+window.TOGAF_CLOUD.user.id : "togaf.generated.runs.v1",
     error: "",
     escape(value) { return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c]); },
     valid(run) {
+      if(window.TOGAF_HOSTED)return window.TogafRecords.validRun(run);
       if (window.TOGAF_GENERATED) {
         if (!window.TogafRecords.validRun(run)) return false;
         const ids = new Set(window.TOGAF_BANKS.filter(b => b.part === run.part).flatMap(b => b.questions.map(q => b.src + "#" + q.n)));
@@ -77,7 +78,9 @@
       if (this.error) throw new Error(this.error);
       const merged = this.mergeRuns(runs, incoming);
       const additions = merged.slice(runs.length);
+      window.TogafCloud?.beforeSave(additions);
       localStorage.setItem(this.KEY, JSON.stringify(merged));
+      window.TogafCloud?.changed();
       return additions.length;
     },
     importJSON(text) {

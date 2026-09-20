@@ -7,7 +7,7 @@ import {execFileSync} from 'node:child_process';
 assert.ok(process.env.npm_execpath,'Run this check with npm run test:standalone.');
 const source=path.resolve(import.meta.dirname,'..');
 const isolated=fs.mkdtempSync(path.join(os.tmpdir(),'togaf-standalone-'));
-const excluded=new Set(['node_modules','dist','.astro','previews','.git']);
+const excluded=new Set(['node_modules','dist','dist-cloud','private','.wrangler','.astro','previews','.git']);
 fs.cpSync(source,isolated,{recursive:true,filter:file=>{
   if(path.relative(source,file).split(path.sep).some(part=>excluded.has(part)||/^\.(?:env|dev\.vars)/.test(part)))return false;
   assert.ok(!fs.lstatSync(file).isSymbolicLink(),'Standalone sources must not borrow files through symlinks: '+file);

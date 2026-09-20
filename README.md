@@ -1,11 +1,23 @@
-# TOGAF study guide
+# TOGAF study companion
 
-A study app for TOGAF Enterprise Architecture Foundation (Part 1) and Practitioner (Part 2), built for my own preparation and shared in case it helps you too. Import custom question sets or practice in English with answer explanations, exam mode, weak-topic tracking and light/dark themes. Save your progress and use JSON export and restore for backups or moving between devices.
+Foundation and Practitioner practice with explanations, statistics and backups.
 
-[Cheat sheet, 13 A4 pages](public/TOGAF-CHEAT-SHEET-EN.pdf).
+- **GitHub Pages:** simple, single-device use with local storage.
+- **Cloudflare or your own host:** sign in to sync progress, sets and preferences across devices.
 
+Use Node 24:
 
-[The Open Group](https://www.opengroup.org/) · [TOGAF resources](https://www.opengroup.org/togaf) · [TOGAF certification](https://www.opengroup.org/certifications/togaf)
+```sh
+npm ci
+npm run dev
+```
 
-Import question JSON under **My data & backups → Custom question sets**. Download the template there for the schema. Export custom sets separately from results; restore the sets first.
+`npm test` runs the checks. `npm run deploy` updates a configured Cloudflare instance. See [deployment setup](DEPLOYMENT.md) for GitHub Pages, Cloudflare and self-hosting.
 
+Manage generated and private question sets in **My data**. I keep questions from paid practice exams in `private/`; those questions aren't included in this repository.
+
+The Git-ignored `private/` directory holds internal datasets and deployment settings. Cloudflare deployments automatically include your configured question sets and images. Back up this directory separately.
+
+Statistics use full-length sessions: **40 questions for Part 1, 8 for Part 2**, in study or exam mode. Combined readiness follows the weaker part.
+
+[Cheat sheet](public/TOGAF-CHEAT-SHEET-EN.pdf) · [TOGAF certification](https://www.opengroup.org/certifications/togaf)

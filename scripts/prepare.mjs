@@ -5,6 +5,7 @@ import path from 'node:path';
 const root=path.resolve(import.meta.dirname,'..');
 const out=path.join(root,'public');
 fs.mkdirSync(out,{recursive:true});
+fs.copyFileSync(path.join(root,'src/records.cjs'),path.join(out,'records.js'));
 const banks=fs.readdirSync(path.join(root,'content/questions/en')).filter(f=>/^p[12]-set-\d{2}\.json$/.test(f)).sort().map(file=>{
   const src=path.basename(file,'.json');
   const exam=JSON.parse(fs.readFileSync(path.join(root,'content/questions/en',file),'utf8'));

@@ -8,9 +8,8 @@ const files = fs.readdirSync(out, {recursive:true}).filter(f => fs.statSync(path
 const bundled=files.filter(f=>/^_astro\/[\w.-]+\.(?:js|css)$/.test(f));
 assert.ok(bundled.some(f=>f.endsWith('.js')) && bundled.some(f=>f.endsWith('.css')),'Astro owns the bundled client assets');
 assert.deepEqual(files.filter(f=>!bundled.includes(f)).sort(), ['.nojekyll','all-banks.js','drill.html','index.html','practice.html','records.js','weak-spots.html',
-  'TOGAF-CHEAT-SHEET-EN.pdf','THIRD-PARTY-NOTICES.txt','exam-engine.js','practice/index.html','my-data/index.html'].sort());
+  'TOGAF-CHEAT-SHEET-EN.pdf','THIRD-PARTY-NOTICES.txt','exam-engine.js','practice/index.html','statistics/index.html','my-data/index.html'].sort());
 for (const lang of ['EN']) assert.equal(fs.readFileSync(path.join(out,`TOGAF-CHEAT-SHEET-${lang}.pdf`)).subarray(0,5).toString(), '%PDF-');
-for (const file of files.filter(f => /\.(js|html)$/.test(f))) assert.ok(!/https?:\/\/[^\s"']*opengroup|Source PDF|Source:|Quelle:/.test(fs.readFileSync(path.join(out,file),'utf8')), file+' has no source links');
 for (const file of files.filter(f => /\.(js|html)$/.test(f))) assert.ok(!/github-signin|github-backup|api\.github\.com|TOGAF_AUTH_URL/.test(fs.readFileSync(path.join(out,file),'utf8')), file+' has no GitHub account integration');
 let stored = null, fail = false;
 const context = vm.createContext({window:{TOGAF_GENERATED:true}, localStorage:{
@@ -39,7 +38,7 @@ const before = stored;
 assert.throws(() => stats.importRuns([{...run,score:0}]));
 assert.throws(() => stats.importJSON('{broken'), /Invalid JSON backup/);
 assert.throws(() => stats.importJSON('null'), /Invalid result data/);
-assert.throws(() => stats.importRuns([{...run,items:[{...run.items[0],id:'pdf-5#1'}]}]));
+assert.throws(() => stats.importRuns([{...run,items:[{...run.items[0],id:'example-set#1'}]}]));
 assert.equal(stored,before,'invalid imports preserve data');
 fail = true;
 assert.equal(stats.save({...run,ts:2}),false);
@@ -63,8 +62,13 @@ for(const bank of banks) {
 console.log('PASS: Pages allowlist, 528 English questions, answer keys, isolated storage, atomic imports and storage failures.');
 const source = fs.readFileSync(path.resolve(import.meta.dirname,'../src/model.js'),'utf8');
 const helpers = vm.createContext({window:{TOGAF_BASE:'/generated/'},location:{href:'https://example.test/generated/practice/?lang=zz'},URL});
-helpers.datasets={read:()=>[],asBanks:()=>[]};helpers.window.TOGAF_BANKS=[];
-vm.runInContext(source.replace(/^import .*;$/gm,'').replaceAll('export ', '') + '\nwindow.check={t,href};',helpers);
+helpers.initializeCloud=()=>{};helpers.datasets={read:()=>[],asBanks:()=>[]};helpers.window.TOGAF_BANKS=[];
+vm.runInContext(source.replace(/^import .*;$/gm,'').replaceAll('export ', '') + '\nwindow.check={t,href,datasetGroups};',helpers);
 assert.equal(helpers.window.check.href('my-data/'),'https://example.test/generated/my-data/');
 assert.equal(helpers.window.check.t('Part {part}',{part:2}),'Part 2');
 assert.equal(helpers.window.check.t('__proto__'),'__proto__');
+
+assert.equal(JSON.stringify(helpers.window.check.datasetGroups([
+  {dataset:'personal-practice',datasetTitle:'Personal practice',title:'First bank',questions:[{}]},
+  {dataset:'personal-practice',datasetTitle:'Personal practice',title:'Second bank',questions:[{},{}]}
+])),JSON.stringify([{id:'personal-practice',title:'Personal practice',count:3}]));

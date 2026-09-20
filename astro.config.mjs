@@ -4,6 +4,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   output:'static',
+  outDir:process.env.TOGAF_DEPLOYMENT==='cloud'?'./dist-cloud':'./dist',
   base:process.env.ASTRO_BASE || '/',
   build:{format:'directory'},
   trailingSlash:'always',

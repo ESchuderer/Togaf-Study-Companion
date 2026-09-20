@@ -1,14 +1,22 @@
 import * as datasets from './datasets.js';
+import {initializeCloud} from './cloud-client.js';
+if(window.TOGAF_HOSTED&&!window.TOGAF_CLOUD?.user?.id) throw Error('Account bootstrap unavailable. Reload or sign in again.');
 // The standalone engine owns mixing, grading and backward-compatible backup validation.
 export const stats = window.TogafStats;
 export const banks = window.TOGAF_BANKS;
-const bundled = banks.slice();
+const bundled = banks.map(b=>({...b,dataset:'generated',datasetTitle:'Generated'}));
+export let disabledDatasets = new Set();
 export let datasetError = '';
 export function reloadDatasets() {
-  try { banks.splice(0,banks.length,...bundled,...datasets.asBanks(datasets.read())); datasetError=''; }
+  try {
+    const disabled=JSON.parse(localStorage.getItem(datasets.SELECTION_KEY)||'[]');
+    if (!Array.isArray(disabled)||disabled.some(id=>typeof id!=='string')) throw Error('Invalid dataset selection.');
+    disabledDatasets=new Set(disabled);
+    banks.splice(0,banks.length,...bundled,...datasets.asBanks(datasets.merge(datasets.read(),window.TOGAF_PRIVATE_DATASETS||[],{replaceImages:true}))); datasetError=''; }
   catch (error) { datasetError='Custom datasets unavailable: '+error.message; }
 }
 reloadDatasets();
+initializeCloud(stats,reloadDatasets);
 export const t = (text, values = {}) => text.replace(/\{(\w+)\}/g, (match, key) => Object.hasOwn(values, key) ? values[key] : match);
 export const href = path => new URL(path, new URL(window.TOGAF_BASE || './', location.href)).href;
 export const score = (part, q, choice) => window.TogafExam.scoreOf.call({part}, q, choice);
@@ -18,18 +26,33 @@ export const time = ms => `${Math.floor(ms / 60000).toString().padStart(2,'0')}:
 
 export const shuffle = values => window.TogafExam.shuffle(values);
 
-export const selectBanks = customOnly => customOnly ? banks.filter(b=>b.src.startsWith('custom-')) : banks;
-export function selectRuns(runs, customOnly) {
-  if(!customOnly)return runs;
-  const ids=new Set(selectBanks(true).flatMap(b=>b.questions.map(q=>stats.qid(q,b.src))));
+export const datasetId = bank => bank.dataset;
+export function datasetGroups(pool=banks) {
+  const groups=new Map();
+  for (const b of pool) {
+    const id=datasetId(b), group=groups.get(id)||{id,title:b.datasetTitle||b.title,count:0};
+    group.count+=b.questions.length;groups.set(id,group);
+  }
+  return [...groups.values()];
+}
+export function setDatasetEnabled(id,enabled) {
+  const next=new Set(disabledDatasets);
+  enabled?next.delete(id):next.add(id);
+  localStorage.setItem(datasets.SELECTION_KEY,JSON.stringify([...next]));
+  disabledDatasets=next;
+  window.TogafCloud?.selectionChanged(id,enabled);
+}
+export const selectBanks = () => banks.filter(b=>!disabledDatasets.has(datasetId(b)));
+export function selectRuns(runs) {
+  const ids=new Set(selectBanks().flatMap(b=>b.questions.map(q=>stats.qid(q,b.src))));
   return runs.map(r=>({...r,items:r.items.filter(i=>ids.has(i.id))})).filter(r=>r.items.length);
 }
 
-export function prepare({part, count, topics, onlyMissed, unseen, mode, source, customOnly=false}, runs) {
+export function prepare({part, count, topics, onlyMissed, unseen, mode, source}, runs) {
   const latest = stats.latest(part, runs);
   const seen = new Set(latest.map(q => q.id));
   const missed = new Set(latest.filter(q => q.earned < q.max).map(q => q.id));
-  const questions = window.TogafExam.mix(selectBanks(customOnly).filter(b=>!source||b.src===source), part, count,
+  const questions = window.TogafExam.mix(selectBanks().filter(b=>!source||datasetId(b)===source||b.src===source), part, count,
     q => topics.has(q.topic) && (!onlyMissed || missed.has(stats.qid(q))),
     q => !unseen || !seen.has(stats.qid(q)));
   if (questions.length>1000) throw Error('Choose at most 1000 questions per session.');

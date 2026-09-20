@@ -10,11 +10,13 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   await call('Emulation.setDeviceMetricsOverride',{width:1440,height:1050,deviceScaleFactor:1,mobile:false});
   await call('Emulation.setEmulatedMedia',{features:[{name:'prefers-color-scheme',value:'dark'}]});
   await open('?lang=en');
-  await click('#custom-only');
-  await wait('document.body.textContent.includes("No custom question sets yet")');
+  assert.equal(await evaluate('!!document.querySelector("#custom-only")'),false);
+  await open('my-data/');
+  await click('[data-dataset=generated]');
   await open('practice/');
   assert.equal(await evaluate('document.querySelector("#build-btn").disabled'),true,'empty custom pool must not fall back to generated questions');
-  await click('#custom-only');
+  await open('my-data/');
+  await click('[data-dataset=generated]');
   await open('');
   await evaluate("localStorage.setItem('togaf.generated.language','zz')");
   await open('');
@@ -40,6 +42,7 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   await open('?lang=en');
   assert.deepEqual(await evaluate('[...document.querySelectorAll(".topnav a")].map(a=>[new URL(a.href).pathname,a.textContent.trim()])'),[
     [new URL(origin+'/').pathname,'Overview'],[new URL(origin+'/practice/').pathname,'Practice'],
+    [new URL(origin+'/statistics/').pathname,'Statistics'],
     [new URL(origin+'/my-data/').pathname,'My data & backups']
   ],'navigation labels match the canonical routes');
   for(const [legacy,target] of [['weak-spots.html','my-data/'],['drill.html','practice/'],['practice.html','']]) {
@@ -50,6 +53,9 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   await open('my-data/?lang=en#backup');
   assert.equal(await evaluate('document.querySelector("main h1").textContent'),'My data & backups');
   assert.ok(await evaluate('!!document.getElementById("backup")'));
+  assert.ok(await evaluate('document.querySelector("#dataset-import-help").textContent.includes("import the sets before restoring their results")'));
+  assert.ok(await evaluate('document.querySelector("#results-export-help").textContent.includes("Export custom sets separately")'));
+  assert.equal(await evaluate('document.querySelector("#download-btn").textContent'),'Download results JSON');
   await open('practice/?lang=en');
   for(const url of await evaluate('[...document.links].filter(a=>a.origin===location.origin).map(a=>a.href)')) assert.equal((await fetch(url)).status,200,url);
   await open('?lang=en');
@@ -111,7 +117,7 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   assert.equal(await evaluate('localStorage.getItem("togaf.runs")'),'private app sentinel');
   await call('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   for(const lang of ['en','zz']) {
-    for(const file of ['','practice/','my-data/']) {
+    for(const file of ['','practice/','statistics/','my-data/']) {
       await open(file+'?lang='+lang);
       assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),file+' '+lang+' mobile layout');
       assert.equal(await evaluate('!!document.querySelector("#language, #translation-notice")'),false);
@@ -132,8 +138,8 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   assert.equal(await evaluate('!!document.querySelector("#github-signin, #github-backup")'),false);
   const custom={version:1,banks:[{id:'browser-check',title:'Custom browser check',part:1,questions:[{n:1,topic:'Custom topic',q:'Select the fifth choice <b>as plain text</b>.',o:['A','B','C','D','E'].map(k=>[k,k]),a:'E',e:'The fifth choice is correct.',images:['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j2ioAAAAASUVORK5CYII=']}]}]};
   const importSet=async()=>evaluate(`(()=>{const transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(custom))}],'custom.json',{type:'application/json'}));const input=document.getElementById('dataset-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
-  await importSet();await wait('document.body.textContent.includes("1 new question sets imported")');
-  await importSet();await wait('document.body.textContent.includes("0 new question sets imported")');
+  await importSet();await wait('document.body.textContent.includes("1 question sets added or updated")');
+  await importSet();await wait('document.body.textContent.includes("0 question sets added or updated")');
   await open('practice/?part=1&dataset=custom-browser-check&count=0&auto=1');await click('#start-btn');
   await wait('!!document.querySelector("[data-question-id]")');
   assert.equal(await evaluate('document.querySelectorAll(".answer-option").length'),5);
@@ -147,6 +153,26 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   assert.equal(await evaluate('TogafStats.importRuns([TogafStats.load().at(-1)])'),0);
   await click('#dataset-export');
   await require('./custom-filter.cjs')({evaluate,open,click,wait});
+  await evaluate(`localStorage.setItem(TogafStats.KEY,JSON.stringify([
+    {id:'exam-pass',ts:10,title:'Pass',part:1,mode:'exam',score:1,max:1,items:[{id:'p1-set-01#1',topic:'Evidence',earned:1,max:1,sel:'A'}]},
+    {id:'exam-fail',ts:20,title:'Fail',part:1,mode:'exam',score:0,max:1,items:[{id:'p1-set-01#1',topic:'Evidence',earned:0,max:1,sel:'B'}]},
+    {id:'study',ts:30,title:'Study',part:1,mode:'study',score:1,max:1,items:[{id:'p1-set-01#1',topic:'Evidence',earned:1,max:1,sel:'A'}]}
+  ]))`);
+  await open('statistics/');
+  assert.ok(await evaluate('document.body.textContent.includes("No full-length sessions yet.")'),'short study and exam sessions excluded from outcomes');
+  assert.equal(await evaluate('[...document.querySelectorAll("meter")].find(m=>m.getAttribute("aria-label")==="Evidence accuracy").value'),100,'latest answer only');
+  await evaluate(`(()=>{const now=Date.now();const bank=TOGAF_BANKS.find(b=>b.src==='p1-set-01');const make=(score,n)=>({id:'trend-'+n,ts:now-(3-n)*86400000,title:'Trend '+n,part:1,mode:n===2?'study':'exam',score,max:40,items:bank.questions.map((q,i)=>({id:bank.src+'#'+q.n,topic:q.topic,earned:i<score?1:0,max:1,sel:'A'}))});localStorage.setItem(TogafStats.KEY,JSON.stringify([make(20,1),make(40,2)]));})()`);
+  await open('statistics/');
+  assert.equal(await evaluate('[...document.querySelectorAll("[data-readiness]")][0].textContent'),'75.0%');
+  assert.ok(await evaluate('document.body.textContent.includes("1 passed (50%) / 1 failed (50%)")'),'both full-length study and exam sessions count');
+  assert.ok(await evaluate('document.body.textContent.includes("+25.0 percentage points")'));
+  assert.equal(await evaluate('document.querySelector("#trend-session").max'),'1');
+  await evaluate(`const slider=document.querySelector('#trend-session');Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set.call(slider,'0');slider.dispatchEvent(new Event('input',{bubbles:true}));slider.dispatchEvent(new Event('change',{bubbles:true}));`);
+  await wait('document.querySelector(".trend-values").textContent.includes("50.0%")');
+  await call('Emulation.setDeviceMetricsOverride',{width:320,height:740,deviceScaleFactor:1,mobile:true});
+  for(const route of ['', 'practice/', 'statistics/', 'my-data/']) {
+    await open(route);assert.ok(await evaluate('document.documentElement.scrollWidth<=innerWidth'),route+' at 320px');
+  }
   await evaluate('localStorage.setItem(TogafStats.KEY,"{broken")');await open('my-data/?lang=en');
   assert.ok(await evaluate('document.body.textContent.includes("Results unavailable:")'));
   assert.equal(await evaluate('localStorage.getItem(TogafStats.KEY)'),'{broken');

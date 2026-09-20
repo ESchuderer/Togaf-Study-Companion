@@ -1,5 +1,7 @@
 // Imported content is plain text plus embedded raster images, never executable HTML.
-export const KEY = 'togaf.custom.datasets.v1';
+const account = typeof window!=='undefined' && window.TOGAF_CLOUD?.user?.id ? '.github.'+window.TOGAF_CLOUD.user.id : '';
+export const KEY = 'togaf.custom.datasets.v1'+account;
+export const SELECTION_KEY = 'togaf.datasets.disabled.v1'+account;
 export const LIMIT = 10 * 1024 * 1024;
 const fail = message => { throw Error(message); };
 const string = (value, max, optional=false) => typeof value === 'string' && value.length <= max && (optional || value.trim().length) ? value : fail('Invalid or missing text field.');
@@ -11,7 +13,9 @@ export function validate(data) {
     ids.add(b.id);
     if (![1,2].includes(b.part) || !Array.isArray(b.questions) || !b.questions.length || b.questions.length > 1000) fail('Each bank needs a part (1 or 2) and 1-1000 questions.');
     const numbers = new Set();
-    return {id:b.id, part:b.part, title:string(b.title,200), questions:b.questions.map(q => {
+    if (b.dataset !== undefined && (typeof b.dataset !== 'string' || !/^[a-z0-9][a-z0-9-]{0,79}$/.test(b.dataset) || b.dataset==='generated' || b.dataset.startsWith('custom-'))) fail('Invalid or reserved dataset group ID.');
+    if (b.datasetTitle !== undefined && b.dataset === undefined) fail('A dataset title requires a group ID.');
+    return {...(b.dataset ? {dataset:b.dataset} : {}),...(b.datasetTitle !== undefined ? {datasetTitle:string(b.datasetTitle,200)} : {}),id:b.id, part:b.part, title:string(b.title,200), questions:b.questions.map(q => {
       if (!Number.isSafeInteger(q.n) || q.n < 1 || numbers.has(q.n)) fail('Question numbers must be unique positive integers within each bank.');
       numbers.add(q.n);
       const result = {n:q.n,topic:string(q.topic,200),q:string(q.q,20000)};
@@ -40,24 +44,40 @@ export function read() {
   const raw=localStorage.getItem(KEY);
   return raw ? validate(JSON.parse(raw)) : [];
 }
-export function merge(current, incoming) {
+export function merge(current, incoming, {replaceImages=false}={}) {
   const merged=[...current];
   for (const bank of incoming) {
     const existing=merged.find(b=>b.id===bank.id);
-    if (existing && JSON.stringify(existing)!==JSON.stringify(bank)) fail('Dataset '+bank.id+' already exists with different content. Use a new ID for a revision.');
+    if (existing && JSON.stringify(existing)!==JSON.stringify(bank)) {
+      // Only trusted site bundles may replace existing images; question text and answers stay immutable.
+      const comparable={...bank,questions:bank.questions.map((q,i)=>{
+        const old=existing.questions[i];
+        if (!old || (old.images?.length && !(replaceImages && q.images?.length))) return q;
+        const comparable={...q};
+        if (Object.hasOwn(old,'images')) comparable.images=old.images;
+        else delete comparable.images;
+        return comparable;
+      })};
+      // Older imports can gain display grouping without changing question identity or content.
+      for (const key of ['dataset','datasetTitle']) if (existing[key]===undefined) delete comparable[key];
+      if (JSON.stringify(comparable)!==JSON.stringify(existing)) fail('Dataset '+bank.id+' already exists with different content. Use a new ID for a revision.');
+      merged[merged.indexOf(existing)]=bank;
+    }
     if (!existing) merged.push(bank);
   }
   if (merged.length>100) fail('At most 100 custom banks can be stored.');
   return merged;
 }
+const windowIfPresent=()=>typeof window==='undefined'?null:window;
 export function importJSON(raw) {
   if (new TextEncoder().encode(raw).length > LIMIT) fail('Dataset exceeds the 10 MB limit.');
   const incoming=validate(JSON.parse(raw)), current=read(), merged=merge(current,incoming);
   const output=JSON.stringify({version:1,banks:merged});
   if (new TextEncoder().encode(output).length > LIMIT) fail('Combined datasets exceed the 10 MB limit.');
   localStorage.setItem(KEY,output);
-  return merged.length-current.length;
+  windowIfPresent()?.TogafCloud?.changed();
+  return merged.filter(b=>!current.includes(b)).length;
 }
 export function asBanks(custom) {
-  return custom.map(b=>({part:b.part,title:b.title,src:'custom-'+b.id,questions:b.questions.map(q=>({...q,src:'custom-'+b.id}))}));
+  return custom.map(b=>({dataset:b.dataset || 'custom-'+b.id,datasetTitle:b.datasetTitle || b.title,part:b.part,title:b.title,src:'custom-'+b.id,questions:b.questions.map(q=>({...q,src:'custom-'+b.id}))}));
 }
