@@ -102,6 +102,13 @@
       });
       return [...items.values()];
     },
+    mistakes(part, runs = this.load()) {
+      const counts = new Map();
+      for (const run of runs) if (run.part === part) for (const item of run.items) {
+        if (item.sel != null && item.earned < item.max) counts.set(item.id, (counts.get(item.id) || 0) + 1);
+      }
+      return counts;
+    },
     topics(part, runs = this.load()) {
       const topics = new Map();
       this.latest(part, runs).forEach(i => {

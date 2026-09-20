@@ -10,7 +10,7 @@
     "dev": "node scripts/prepare.mjs && astro dev",
     "build": "node scripts/prepare.mjs && astro build",
     "preview": "astro preview",
-    "test": "npm run build && node tests/content.mjs && node tests/datasets.mjs && node tests/statistics.mjs",
+    "test": "npm run build && node tests/content.mjs && node tests/datasets.mjs && node tests/statistics.mjs && node tests/question-text.mjs && node tests/practice.mjs",
     "test:browser": "node tests/run-browser.cjs",
     "test:standalone": "node tests/standalone.mjs",
     "build:cloud": "node cloud/build.mjs",

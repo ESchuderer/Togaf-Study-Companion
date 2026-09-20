@@ -136,7 +136,7 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   for(const url of await evaluate('[...document.links].filter(a=>a.origin===location.origin).map(a=>a.href)')) assert.equal((await fetch(url)).status,200,url);
   await open('my-data/?lang=en');
   assert.equal(await evaluate('!!document.querySelector("#github-signin, #github-backup")'),false);
-  const custom={version:1,banks:[{id:'browser-check',title:'Custom browser check',part:1,questions:[{n:1,topic:'Custom topic',q:'Select the fifth choice <b>as plain text</b>.',o:['A','B','C','D','E'].map(k=>[k,k]),a:'E',e:'The fifth choice is correct.',images:['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j2ioAAAAASUVORK5CYII=']}]}]};
+  const custom={version:1,banks:[{id:'browser-check',title:'Custom browser check',part:1,questions:[{n:1,topic:'Custom topic',q:'Select the fifth choice <b>as plain text</b>. Output & Outcome: A clear decision. Essential Knowledge: Available time. (Schedule) Available people. (Capacity) Which choice fits?',o:['A','B','C','D','E'].map(k=>[k,k==='E'?'Compare: 1) First check; 2) Second check.':k]),a:'E',e:'First paragraph.\n\nSecond paragraph.',images:['data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+j2ioAAAAASUVORK5CYII=']}]}]};
   const importSet=async()=>evaluate(`(()=>{const transfer=new DataTransfer();transfer.items.add(new File([${JSON.stringify(JSON.stringify(custom))}],'custom.json',{type:'application/json'}));const input=document.getElementById('dataset-file');input.files=transfer.files;input.dispatchEvent(new Event('change',{bubbles:true}));})()`);
   await importSet();await wait('document.body.textContent.includes("1 question sets added or updated")');
   await importSet();await wait('document.body.textContent.includes("0 question sets added or updated")');
@@ -144,15 +144,38 @@ module.exports=async function({call,evaluate,go,origin,errors}) {
   await wait('!!document.querySelector("[data-question-id]")');
   assert.equal(await evaluate('document.querySelectorAll(".answer-option").length'),5);
   assert.equal(await evaluate('document.querySelector(".question-text b")'),null,'imported HTML stays text');
+  assert.equal(await evaluate('document.querySelectorAll(".question-text .text-label").length'),2);
+  assert.equal(await evaluate('document.querySelectorAll(".question-text ul li").length'),2);
+  assert.equal(await evaluate('document.querySelector(".question-text p:last-child").textContent'),'Which choice fits?');
+  assert.equal(await evaluate('document.querySelectorAll("button[data-key=E] ol li").length'),2);
+
   await wait('document.querySelector(".question-card img").complete');
   assert.ok(await evaluate('document.querySelector(".question-card img").naturalWidth>0'));
   await click('button[data-key="E"]');await click('#submit-btn');await wait('!!document.getElementById("result")');
   assert.equal(await evaluate('TogafStats.load().at(-1).score'),1);
   assert.equal(await evaluate('TogafStats.load().at(-1).items[0].id'),'custom-browser-check#1');
+  await click('#review-btn');
+  assert.equal(await evaluate('document.querySelectorAll(".answer-review .question-text ul li").length'),2);
+  assert.equal(await evaluate('document.querySelectorAll(".answer-review .rationale .formatted-text p").length'),2);
+
   await open('my-data/');assert.equal(await evaluate('TogafStats.load().at(-1).score'),1);
   assert.equal(await evaluate('TogafStats.importRuns([TogafStats.load().at(-1)])'),0);
   await click('#dataset-export');
   await require('./custom-filter.cjs')({evaluate,open,click,wait});
+  await evaluate(`(()=>{const bank=TOGAF_BANKS.find(b=>b.src==='p1-set-01');
+    const runs=[0,1,2,3].map(n=>{const items=bank.questions.slice(0,3).map((q,i)=>({id:bank.src+'#'+q.n,topic:q.topic,earned:i===0&&n===3?1:0,max:1,sel:i===0?(n===3?q.a:q.o.find(([key])=>key!==q.a)[0]):i===1&&n===0?q.o.find(([key])=>key!==q.a)[0]:null}));
+      return {id:'mistakes-'+n,ts:n+1,title:'Mistake practice',part:1,mode:'study',score:items.reduce((sum,i)=>sum+i.earned,0),max:3,items};});
+    localStorage.setItem(TogafStats.KEY,JSON.stringify(runs));})()`);
+  await open('practice/?part=1&count=2&missed=1');
+  assert.equal(await evaluate('document.querySelector("#question-selection").value'),'latest-mistakes','legacy mistake links still work');
+  assert.equal(await evaluate('document.querySelector("#match-count").textContent'),'1 questions match');
+  await evaluate(`const selection=document.querySelector('#question-selection');selection.value='most-mistakes';selection.dispatchEvent(new Event('change',{bubbles:true}));`);
+  await wait('document.querySelector("#match-count").textContent==="2 questions match"');
+  await click('#build-btn');await click('#start-btn');
+  await wait('document.querySelector("[data-question-id]")?.dataset.questionId==="p1-set-01#1"');
+  await click('#next-btn');
+  await wait('document.querySelector("[data-question-id]")?.dataset.questionId==="p1-set-01#2"');
+  await click('#submit-btn');await dialog('action');await wait('!!document.querySelector("#result")');
   await evaluate(`localStorage.setItem(TogafStats.KEY,JSON.stringify([
     {id:'exam-pass',ts:10,title:'Pass',part:1,mode:'exam',score:1,max:1,items:[{id:'p1-set-01#1',topic:'Evidence',earned:1,max:1,sel:'A'}]},
     {id:'exam-fail',ts:20,title:'Fail',part:1,mode:'exam',score:0,max:1,items:[{id:'p1-set-01#1',topic:'Evidence',earned:0,max:1,sel:'B'}]},

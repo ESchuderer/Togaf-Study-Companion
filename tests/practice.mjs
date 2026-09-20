@@ -1,0 +1,40 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+
+const makeBank=(src,part=1)=>({src,part,title:src,questions:[1,2,3].map(n=>({n,src,topic:n===3?'Other':'Focus',o:part===1?[['A','Yes'],['B','No']]:{A:'Best',B:'Next',C:'Weak',D:'Wrong'}}))});
+const generated=[makeBank('set-a'),makeBank('set-b'),makeBank('part-two',2)];
+const localStorage={getItem:()=>null,setItem(){}};
+const context=vm.createContext({window:{TOGAF_BANKS:generated},localStorage,crypto});
+vm.runInContext(fs.readFileSync(new URL('../public/exam-engine.js',import.meta.url),'utf8'),context);
+context.datasets={SELECTION_KEY:'selection',read:()=>[],merge:()=>[],asBanks:()=>[]};
+context.initializeCloud=()=>{};
+const source=fs.readFileSync(new URL('../src/model.js',import.meta.url),'utf8');
+vm.runInContext(source.replace(/^import .*;$/gm,'').replaceAll('export ','')+'\nwindow.test={prepare,practiceFilter,setDatasetEnabled};',context);
+const {prepare,practiceFilter,setDatasetEnabled}=context.window.test;
+const stats=context.window.TogafStats;
+const attempt=(id,earned=0,sel='B',part=1,ts=1)=>({part,ts,items:[{id,earned,max:part===1?1:5,sel}]});
+const runs=[attempt('set-a#1'),attempt('set-a#1',0,'B',1,2),attempt('set-a#1',1,'A',1,3),attempt('set-a#2'),
+  ...[1,2,3].map(ts=>attempt('set-b#1',0,'B',1,ts)),attempt('set-b#3'),
+  attempt('set-a#3',0,null),attempt('set-a#3',0,undefined),attempt('part-two#1',3,'B',2),attempt('part-two#1',1,'C',2),attempt('part-two#2',5,'A',2),attempt('part-two#3',0,null,2)];
+delete runs[9].items[0].sel;
+const config={part:1,count:2,topics:new Set(['Focus','Other']),selection:'most-mistakes',mode:'study',source:''};
+const ids=session=>Array.from(session.questions,q=>stats.qid(q));
+assert.deepEqual(ids(prepare(config,runs)),['set-b#1','set-a#1'],'rank whole pool before selecting the requested count');
+assert.deepEqual(Array.from(prepare(config,runs).questions,q=>q.n),[1,2],'session numbers remain unique and sequential');
+assert.deepEqual(ids(prepare({...config,source:'set-a'},runs)),['set-a#1','set-a#2'],'source filter applies');
+assert.deepEqual(ids(prepare({...config,topics:new Set(['Other'])},runs)),['set-b#3'],'topic filter excludes higher-ranked questions');
+const all=prepare({...config,count:0},runs);
+assert.equal(all.questions.length,4,'only questions with answered mistakes are included');
+assert.equal(new Set(ids(all)).size,4);
+assert.ok(!ids(prepare({...config,selection:'latest-mistakes',count:0},runs)).includes('set-a#1'),'latest mistakes excludes recovered questions');
+assert.equal(stats.mistakes(1,runs).get('set-a#1'),2,'later success does not erase past mistakes');
+assert.equal(stats.mistakes(1,runs).has('set-a#3'),false,'blank and unknown selections do not count');
+assert.deepEqual(ids(prepare({...config,part:2},runs)),['part-two#1'],'partial credit counts, full credit and blanks do not');
+assert.throws(()=>prepare(config,[]),/No questions match/);
+assert.equal(generated[0].questions.filter(practiceFilter(config,runs)).length,2,'preview and session use the same eligibility');
+context.window.TOGAF_BANKS.push({...makeBank('custom-personal'),dataset:'personal',datasetTitle:'Personal'});
+setDatasetEnabled('generated',false);
+assert.deepEqual(ids(prepare(config,[...runs,attempt('custom-personal#1')])),['custom-personal#1'],'disabled datasets stay excluded');
+assert.throws(()=>prepare({...config,count:-1},runs),/Invalid practice selection/);
+console.log('PASS: mistake frequency, complete-pool ranking, partial credit, blanks, stable IDs, latest-answer contrast, topics and enabled sets.');

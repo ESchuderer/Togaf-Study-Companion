@@ -48,16 +48,28 @@ export function selectRuns(runs) {
   return runs.map(r=>({...r,items:r.items.filter(i=>ids.has(i.id))})).filter(r=>r.items.length);
 }
 
-export function prepare({part, count, topics, onlyMissed, unseen, mode, source}, runs) {
-  const latest = stats.latest(part, runs);
-  const seen = new Set(latest.map(q => q.id));
-  const missed = new Set(latest.filter(q => q.earned < q.max).map(q => q.id));
-  const questions = window.TogafExam.mix(selectBanks().filter(b=>!source||datasetId(b)===source||b.src===source), part, count,
-    q => topics.has(q.topic) && (!onlyMissed || missed.has(stats.qid(q))),
-    q => !unseen || !seen.has(stats.qid(q)));
+export function practiceFilter({part,topics,selection},runs) {
+  const ids=selection==='most-mistakes'?stats.mistakes(part,runs):selection==='latest-mistakes'
+    ?new Set(stats.latest(part,runs).filter(q=>q.earned<q.max).map(q=>q.id)):null;
+  return q=>topics.has(q.topic)&&(!ids||ids.has(stats.qid(q)));
+}
+
+export function prepare({part, count, topics, selection='unseen', mode, source}, runs) {
+  const seen = new Set(stats.latest(part,runs).map(q=>q.id));
+  const ranked=selection==='most-mistakes';
+  if(ranked&&(!Number.isInteger(count)||count<0))throw Error('Invalid practice selection.');
+  let questions = window.TogafExam.mix(selectBanks().filter(b=>!source||datasetId(b)===source||b.src===source), part, ranked?0:count,
+    practiceFilter({part,topics,selection},runs),
+    q => selection!=='unseen' || !seen.has(stats.qid(q)));
+  if(ranked) {
+    const mistakes=stats.mistakes(part,runs);
+    // The mixed pool randomizes ties; rank before applying the requested session length.
+    questions.sort((a,b)=>mistakes.get(stats.qid(b))-mistakes.get(stats.qid(a)));
+    questions=questions.slice(0,count||questions.length);
+  }
   if (questions.length>1000) throw Error('Choose at most 1000 questions per session.');
-  if (!questions.length) throw Error(t("No questions match. Widen the topics or untick 'only missed'."));
-  return {part, mode, questions:questions.map(q => ({...q, keys:shuffle(part===1?q.o.map(o=>o[0]):Object.keys(q.o))})), responses:{}, index:0, started:0};
+  if (!questions.length) throw Error(t('No questions match. Widen the topics or change question selection.'));
+  return {part, mode, questions:questions.map((q,i) => ({...q,n:i+1,keys:shuffle(part===1?q.o.map(o=>o[0]):Object.keys(q.o))})), responses:{}, index:0, started:0};
 }
 
 export function resultOf(session, now = Date.now()) {
