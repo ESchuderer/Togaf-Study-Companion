@@ -37,4 +37,7 @@ context.window.TOGAF_BANKS.push({...makeBank('custom-personal'),dataset:'persona
 setDatasetEnabled('generated',false);
 assert.deepEqual(ids(prepare(config,[...runs,attempt('custom-personal#1')])),['custom-personal#1'],'disabled datasets stay excluded');
 assert.throws(()=>prepare({...config,count:-1},runs),/Invalid practice selection/);
+context.window.TOGAF_BANKS.push({src:'above',part:1,title:'above',dataset:'generated',questions:[{n:1,src:'above',topic:'Focus',o:[['A','All of the above'],['B','One'],['C','None of the above'],['D','Two']]}]});
+setDatasetEnabled('generated',true);
+for(let i=0;i<20;i++)assert.deepEqual(prepare({...config,source:'above',selection:'all',count:0},[]).questions[0].keys.slice(-2).sort().join(),"A,C",'"of the above" options stay last');
 console.log('PASS: mistake frequency, complete-pool ranking, partial credit, blanks, stable IDs, latest-answer contrast, topics and enabled sets.');

@@ -25,6 +25,12 @@ export const percent = (earned, max) => max ? Math.round(earned / max * 100) : 0
 export const time = ms => `${Math.floor(ms / 60000).toString().padStart(2,'0')}:${Math.floor(ms / 1000 % 60).toString().padStart(2,'0')}`;
 
 export const shuffle = values => window.TogafExam.shuffle(values);
+// "All/None of the above" only makes sense as the last option, so shuffle around it.
+const optionKeys = (part, o) => {
+  const text = key => part===1 ? o.find(x=>x[0]===key)[1] : o[key];
+  const keys = shuffle(part===1 ? o.map(x=>x[0]) : Object.keys(o));
+  return [...keys.filter(k=>!/of the above/i.test(text(k))), ...keys.filter(k=>/of the above/i.test(text(k)))];
+};
 
 export const datasetId = bank => bank.dataset;
 export function datasetGroups(pool=banks) {
@@ -69,7 +75,7 @@ export function prepare({part, count, topics, selection='unseen', mode, source},
   }
   if (questions.length>1000) throw Error('Choose at most 1000 questions per session.');
   if (!questions.length) throw Error(t('No questions match. Widen the topics or change question selection.'));
-  return {part, mode, questions:questions.map((q,i) => ({...q,n:i+1,keys:shuffle(part===1?q.o.map(o=>o[0]):Object.keys(q.o))})), responses:{}, index:0, started:0};
+  return {part, mode, questions:questions.map((q,i) => ({...q,n:i+1,keys:optionKeys(part,q.o)})), responses:{}, index:0, started:0};
 }
 
 export function resultOf(session, now = Date.now()) {
